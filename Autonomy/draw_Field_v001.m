@@ -2,16 +2,23 @@
 %figure; 
 %hold on
 
-title_text = title('FRC Team 2170 Robot Simulator');
+title_text = title('FRC Team 2170 Robot Simulator 2020');
 %text(Field.L/2-1, Field.W/2+1/2, ['time = ' num2str(Field.t) ' secs']);
 text(10, Field.W/2+1/2, ['time = ' num2str(Field.t) ' secs']);
+draw_FieldLabels();
+
+Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
+draw_AutoLine();
+draw_Trench();
+draw_Balls();
+
 % Plot field
 %OutsideSquare = plot([0 0 Field.L Field.L 0], [0 Field.L Field.L 0 0], 'g');
 
 
 % xlim([0 54*ft]);
 % ylim([0 27*ft]);
-Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
+%Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
 
 %draw_StartingPositions();
 %draw_AutoLine();
@@ -28,7 +35,7 @@ Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
 % plot([Field.ScaleRamp.bl_x, Field.ScaleRamp.br_x] , [Field.ScaleRamp.bl_y, Field.ScaleRamp.br_y], 'Color',[0.4940, 0.1840, 0.5560]);
 % plot([Field.ScaleRamp.tl_x, Field.ScaleRamp.tr_x] , [Field.ScaleRamp.tl_y, Field.ScaleRamp.tr_y], 'Color', [0.4940, 0.1840, 0.5560]);
 
-draw_Rocket_Line;
+%draw_Rocket_Line;
 
 
 %plot([6,0] , [6,0 + (18*in)]);
