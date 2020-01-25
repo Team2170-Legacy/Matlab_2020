@@ -11,6 +11,7 @@ Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
 draw_AutoLine();
 draw_Trench();
 draw_Balls();
+%draw_Trajectories();
 
 % Plot field
 %OutsideSquare = plot([0 0 Field.L Field.L 0], [0 Field.L Field.L 0 0], 'g');

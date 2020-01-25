@@ -7,18 +7,19 @@
 %
 %   03/01/2019 v007     Uses simulate_robot_v008.m, simpler version
 
-make_movies = true
-%make_movies = false
+%make_movies = true
+make_movies = false
 
 init_Constants
 Init_Robot_v002
 Init_Field_v003
+init_Trajectory_To_Trench;
 % 03/07/2018    New trajectory names
-init_Trajectories_v006
+%init_Trajectories_v006
 
 all_Trajectories_String = {
     
-'Straight'
+'To_Trench'
 };
 
 for traj = 1:length(all_Trajectories_String)
