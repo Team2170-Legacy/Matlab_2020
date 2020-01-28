@@ -41,7 +41,7 @@ for traj = 1:length(all_Trajectories)
         %close all;
     end
     
-    simulate_robot_v008;
+    simulate_robot_v006;
     
     t_final     = all_t(end);
     

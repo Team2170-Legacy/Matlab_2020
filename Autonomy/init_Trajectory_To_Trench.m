@@ -27,3 +27,4 @@ To_Trench.y =   [   TargetR...
 To_Trench.v = 1.6;
 To_Trench.t_final = traj_length(To_Trench) / To_Trench.v  * 1.3;
 To_Trench.name = 'To_Trench';
+To_Trench.theta_start = 180*deg;
