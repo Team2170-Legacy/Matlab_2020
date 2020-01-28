@@ -2,6 +2,10 @@
 Field.L = 53*ft;
 Field.W = 27*ft;
 
+Field.PlayerStation = 6*ft + 3*in;
+Field.CornerX = Field.PlayerStation * sind(20);
+Field.CornerY = Field.PlayerStation * cosd(20);
+
 %auto lines - *** UPDATE TO 2020 LOCATIONS!!! ***
 
 AutoLineRed.C1_x = 10*ft;

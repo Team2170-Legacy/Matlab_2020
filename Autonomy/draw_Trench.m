@@ -1,21 +1,28 @@
+trenchRunL = 18*ft;
+trenchRunW = 4*ft + 7.5*in;
+
 %red trench run
-arrX = [17.5*ft 17.5*ft 35.5*ft 35.5*ft];
-arrY = [27*ft 22.375*ft 22.375*ft 27*ft];
+arrX = [(Field.L/2 - trenchRunL/2) (Field.L/2 - trenchRunL/2) (Field.L/2 + trenchRunL/2) (Field.L/2 + trenchRunL/2)];
+arrY = [Field.W (Field.W - trenchRunW) (Field.W - trenchRunW) Field.W];
 plot(arrX, arrY, 'linewidth', 2, 'color', [1 0 0]);
 
 %blue trench run
-arrX = [17.5*ft 17.5*ft 35.5*ft 35.5*ft];
-arrY = [0*ft 4.625*ft 4.625*ft 0*ft];
+arrX = [(Field.L/2 - trenchRunL/2) (Field.L/2 - trenchRunL/2) (Field.L/2 + trenchRunL/2) (Field.L/2 + trenchRunL/2)];
+arrY = [0*ft trenchRunW trenchRunW 0*ft];
 plot(arrX, arrY, 'linewidth', 2, 'color', [0 0 1]);
 
 %30.56 draw trenchs
 %Red Trench
-arrX = [29.31*ft 29.31*ft 31.81*ft 31.81*ft 29.31*ft];
-arrY = [27*ft 22.375*ft 22.375*ft 27*ft 27*ft];
+redTrenchCenterX = 30*ft + 6.72*in;
+blueTrenchCenterX = 22*ft + 5.28*in;
+trenchX = 2*ft + 6*in;
+
+arrX = [(redTrenchCenterX - trenchX/2) (redTrenchCenterX - trenchX/2) (redTrenchCenterX + trenchX/2) (redTrenchCenterX + trenchX/2) (redTrenchCenterX - trenchX/2)];
+arrY = [Field.W (Field.W - trenchRunW) (Field.W - trenchRunW) Field.W Field.W];
 plot(arrX, arrY, 'linewidth', 3, 'color', [.5 .5 .5]);
 %Blue Trench
-arrX = [21.19*ft 21.19*ft 23.69*ft 23.69*ft 21.19*ft];
-arrY = [0*ft 4.625*ft 4.625*ft 0*ft 0*ft];
+arrX = [(blueTrenchCenterX - trenchX/2) (blueTrenchCenterX - trenchX/2) (blueTrenchCenterX + trenchX/2) (blueTrenchCenterX + trenchX/2) (blueTrenchCenterX - trenchX/2)];
+arrY = [0*ft trenchRunW trenchRunW 0*ft 0*ft];
 plot(arrX, arrY, 'linewidth', 3, 'color', [.5 .5 .5]);
     
 %draw baseplates

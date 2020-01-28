@@ -7,10 +7,14 @@ title_text = title('FRC Team 2170 Robot Simulator 2020');
 text(10, Field.W/2+1/2, ['time = ' num2str(Field.t) ' secs']);
 draw_FieldLabels();
 
-Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
+%Arcade = plot([0 Field.L Field.L 0 0], [0 0 Field.W Field.W 0],'gre');
+Field.arrX = [Field.CornerX 0 0 Field.CornerX (Field.L - Field.CornerX) Field.L Field.L (Field.L - Field.CornerX) Field.CornerX];
+Field.arrY = [Field.W (Field.W - Field.CornerY) Field.CornerY 0 0 Field.CornerY (Field.W - Field.CornerY) Field.W Field.W];
+Arcade = plot(Field.arrX, Field.arrY, 'gre');
 draw_AutoLine();
 draw_Trench();
 draw_Balls();
+draw_Ports();
 %draw_Trajectories();
 
 % Plot field
