@@ -10,17 +10,14 @@
 %make_movies = true
 make_movies = false
 
-init_Constants
-Init_Robot_v002
-Init_Field_v003
+init_Constants;
+Init_Robot_v002;
+Init_Field_v003;
 init_Trajectory_To_Trench;
 % 03/07/2018    New trajectory names
 %init_Trajectories_v006
 
-all_Trajectories_String = {
-    
-'To_Trench'
-};
+all_Trajectories_String = {'To_Trench'};
 
 for traj = 1:length(all_Trajectories_String)
     cmd_str = [ 'all_Trajectories{traj} = ' all_Trajectories_String{traj} ';' ];
@@ -42,13 +39,13 @@ for traj = 1:length(all_Trajectories)
         
         movie_file_name = [ 'Robot_Movie_' trajString '.mp4' ];
         del_command     = ['!del Movies\' movie_file_name];
-        copy_command    = ['!copy Robot_Movie.mp4 ' 'Movies\' movie_file_name];
+        copy_command    = ['!copy ' movie_file_name 'Movies\' movie_file_name];
         eval(del_command);
         eval(copy_command);
         %close all;
     end
     
-    make_dot_h_file_v003(trajString ,Robot.wR_all,Robot.wL_all,all_t,Robot,t_auto_end, i_auto_end)
+    make_dot_h_file_v003(trajString, Robot.wR_all, Robot.wL_all, all_t, Robot, t_auto_end, i_auto_end)
     
 end
 

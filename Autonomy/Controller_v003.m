@@ -1,4 +1,4 @@
-function [v,omega] = Controller_v003(distance, angle, h_pix_L, h_pix_R, Robot)
+function [v,omega] = Controller_v003(distance, angle, Robot)
 %   NOTE _v002 uses DISTANCE in ft AND angle in PIXELS
 %   OUTPUT is v in ft/s   AND omega in -rad/s
 
@@ -41,7 +41,7 @@ start_cruising_distance = 0;%0.5;%***1;    % [ft]  distance when velocity
 %       P-control turns off and cruising at
 %       constant velocity starts
 
-e_h_pix_L_R     = h_pix_L - h_pix_R;
+e_h_pix_L_R     = 0;
 
 if distance > stop_turning_distance,    % distance units are in ft
     % v002 WITHOUT WALL ALIGNMENT   omega_temp = Kp_omega*angle;
