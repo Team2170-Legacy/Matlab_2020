@@ -7,8 +7,8 @@
 %
 %   03/01/2019 v007     Uses simulate_robot_v008.m, simpler version
 
-%make_movies = true
-make_movies = false
+make_movies = true
+%make_movies = false
 
 init_Constants;
 Init_Robot_v002;
@@ -30,20 +30,20 @@ for traj = 1:length(all_Trajectories)
     trajectory  = all_Trajectories{traj};
     trajString  = all_Trajectories_String{traj};
     
-    simulate_robot_v008;
-    
-    t_final     = all_t(end);
-    
     if make_movies
         %   copy movie file
         
         movie_file_name = [ 'Robot_Movie_' trajString '.mp4' ];
-        del_command     = ['!del Movies\' movie_file_name];
-        copy_command    = ['!copy ' movie_file_name 'Movies\' movie_file_name];
+        del_command     = ['!del ' movie_file_name];
+        copy_command    = ['!copy ' movie_file_name ' ' movie_file_name];
         eval(del_command);
         eval(copy_command);
         %close all;
     end
+    
+    simulate_robot_v008;
+    
+    t_final     = all_t(end);
     
     make_dot_h_file_v003(trajString, Robot.wR_all, Robot.wL_all, all_t, Robot, t_auto_end, i_auto_end)
     

@@ -7,12 +7,10 @@
 
 %S     THIS CLEARS NECESSARY VARIABLES FOR RUNTIME
 
-make_movies = true;
-
 % init_Constants
 % Init_Robot_v002
 % Init_Field_v003
-Init;
+%Init;
 
 total_time = 2;
 
@@ -98,7 +96,7 @@ Robot.vFwd_all		= zeros(N,1);	% [m/s]		robot forward velocity (in the direction 
 Robot.target_distance_all = zeros(N,1);	% [m]  robot camera distance to target
 
 if make_movies,
-    vWriter = VideoWriter('Robot_Movie','MPEG-4');	% initialize vide capture of simulation frames
+    vWriter = VideoWriter(movie_file_name,'MPEG-4');	% initialize vide capture of simulation frames
     open(vWriter);									% open movie file
     
     f1		= figure; % open figure
@@ -106,7 +104,7 @@ if make_movies,
     %*** MK 2019-03-02 this is the 2018 Movie figure size   set(f1,'position', [50 50 pos(3)*2 pos(4)*1.7]);
     set(f1,'position', [200 200 800 400]);
     hold on							% ensure multiple drawing commands are overlaid on the figure
-    draw_Field_v001
+    %draw_Field_v001
     
     axis('equal')					% ensure x & y directions are scale equally on screen
     xlim([-6*ft Field.L + 5*ft])					% [m]	set figure limits for x-axis
