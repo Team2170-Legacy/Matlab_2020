@@ -1,6 +1,6 @@
 MidR = 24.6875*ft; %Y coord of midline of red trench run
 LineR = AutoLineRed.C1_x; %X coord of Red Auto line
-TargetR = 21.6*ft; %Y coord of target zone red
+TargetR = (Field.W - Field.CornerY)-targetZone/2; %Y coord of target zone red
 
 To_Trench.x =   [   LineR...
                     LineR-0.5...
@@ -26,5 +26,5 @@ To_Trench.y =   [   TargetR...
 
 To_Trench.v = 1.6;
 To_Trench.t_final = traj_length(To_Trench) / To_Trench.v  * 1.3;
-To_Trench.name = 'To_Trench';
+To_Trench.name = 'To Trench';
 To_Trench.theta_start = 180*deg;
