@@ -14,6 +14,7 @@ init_Constants;
 Init_Robot_v002;
 Init_Field_v003;
 init_Trajectory_To_Trench;
+init_Trajectory_To_PwrPort;
 % 03/07/2018    New trajectory names
 %init_Trajectories_v006
 

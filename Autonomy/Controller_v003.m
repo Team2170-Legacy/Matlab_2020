@@ -41,14 +41,7 @@ start_cruising_distance = 0;%0.5;%***1;    % [ft]  distance when velocity
 %       P-control turns off and cruising at
 %       constant velocity starts
 
-e_h_pix_L_R     = 0;
-
-if distance > stop_turning_distance,    % distance units are in ft
-    % v002 WITHOUT WALL ALIGNMENT   omega_temp = Kp_omega*angle;
-    omega_temp = Kp_omega*angle + Kp_align*e_h_pix_L_R;
-else
-    omega_temp = 0;
-end
+omega_temp = Kp_omega*angle;
 
 omega_max = Robot.omega_max;
 
