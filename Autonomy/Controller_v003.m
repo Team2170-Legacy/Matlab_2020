@@ -32,7 +32,7 @@ Robot.v_max = 1.5;
 %   Robot.omega_max  was set to 1.0!!
 
 %0.04;
-%Kp_omega = 32;
+Kp_omega = 32;
 
 % Angle
 

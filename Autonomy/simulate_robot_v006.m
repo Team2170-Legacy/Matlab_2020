@@ -33,6 +33,8 @@
 %   Select trajectory for testing
 trajectory = eval(trajString); %BSML
 
+% Plot trajectory
+plot(trajectory.x, trajectory.y, 'c-o');
 
 % Select trajectories to simulate
 if ~exist('trajectory', 'var')
@@ -113,8 +115,8 @@ if make_movies,
     f1		= figure; % open figure
     pos = get(f1, 'position');
     set(f1,'position', [50 50 pos(3)*2 pos(4)*1.7]);
-    hold on							% ensure multiple drawing commands are overlaid on the figure
-    draw_Field_v001
+    hold on;							% ensure multiple drawing commands are overlaid on the figure
+    draw_Field_v001;
     draw_Trajectory(trajectory);
     
     axis('equal')					% ensure x & y directions are scale equally on screen
@@ -351,11 +353,20 @@ for i=2:N
         
         displayangle = (round(angle/deg * 100)/100);
         displaydistance = (round(distance*100)/100);
+        displayvFwd = (round(Robot.vFwd*100)/100);
         
-        text(Field.L/2-1, Field.W/2, ['alpha = ' num2str(displayangle) '?']);
-        text(Field.L/2-1, Field.W/2-1/2, ['distance = ' num2str(displaydistance) ' m']);
+        %         text(Field.L/2-1, Field.W/2, ['alpha = ' num2str(displayangle) '°']);
+        %         text(Field.L/2-1, Field.W/2-1/2, ['distance = ' num2str(displaydistance) ' m']);
+        %         text(Field.L/2-1, Field.W - 0.5, trajectory.name);
         
-        text(Field.L/2-1, Field.W - 0.5, trajectory.name);
+        text(10, Field.W/2, ['angle = ' num2str(displayangle) '°']);
+        text(10, Field.W/2-1/2, ['distance = ' num2str(displaydistance) ' m']);
+        text(10, Field.W/2-1,  ['vFwd = ' num2str(displayvFwd) ' m/s']);
+        
+        %isSkewed = isSkewed(Robot.C1_x, Robot.C1_y, Robot.C2_x, Robot.C2_y);
+        %text(10, Field.W/2-1,  ['isSkewed = ' num2str(isSkewed) ' m/s']);
+        
+        %        text(10, Field.W - 0.5, trajectory.name);
         
         Robot_Figure		= getframe(f1);		% Capture screenshot image of figure
         Robot_Image			= Robot_Figure.cdata;
@@ -370,7 +381,6 @@ for i=2:N
         t
     end
     
-    
     Robot.x_all(i)		= Robot.x;		% Store all robot variables in storage arrays
     Robot.y_all(i)		= Robot.y;
     Robot.theta_all(i)	= Robot.theta;
@@ -378,7 +388,7 @@ for i=2:N
     Robot.wL_all(i)		= Robot.wL;
     Robot.wR_all(i)		= Robot.wR;
     
-    Robot.e_Gear_x_all(i)   = e_Gear_x;
+    %Robot.e_Gear_x_all(i)   = e_Gear_x;
     Robot.target_distance_all(i)    = target_distance;
     
     if make_movies,
