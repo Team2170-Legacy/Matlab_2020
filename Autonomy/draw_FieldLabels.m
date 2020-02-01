@@ -19,7 +19,11 @@ blueTrenchText = text(6.5, -.25, 'Blue Trench', 'Rotation', -30, 'FontSize', 8, 
 redTrenchText = text(9.5, 8.5, 'Red Trench', 'Rotation', 30, 'FontSize', 8, 'color', [1 0 0]);
 
 %port textf
-redTargetText = text(0, 6, 'Red Target Port', 'FontSize', 5, 'color', [1 0 0]);
-blueTargetText = text(15, 2.5, 'Blue Target Port', 'FontSize', 5, 'color', [0 0 1]);
-redLoadingText = text(15, 6, 'Red Loading Port', 'FontSize', 5, 'color', [1 0 0]);
-blueLoadingText = text(0, 2.5, 'Blue Loading Port', 'FontSize', 5, 'color', [0 0 1]);
+redTargetText = text(0, 6, 'Red Target Port', 'FontSize', 7, 'color', [1 0 0]);
+blueTargetText = text(15, 2.5, 'Blue Target Port', 'FontSize', 7, 'color', [0 0 1]);
+redLoadingText = text(15, 6, 'Red Loading Port', 'FontSize', 7, 'color', [1 0 0]);
+blueLoadingText = text(0, 2.5, 'Blue Loading Port', 'FontSize', 7, 'color', [0 0 1]);
+
+%rendevous text
+redRend = text(6.3, 4.25, 'Red Rendevous Area', 'FontSize', 7, 'color', [1 0 0], 'Rotation', 22.5);
+blueRend = text(7.25, 3, 'Blue Rend. Area', 'FontSize', 7, 'color', [0 0 1], 'Rotation', 22.5);
