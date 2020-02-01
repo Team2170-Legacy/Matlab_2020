@@ -358,7 +358,7 @@ for i=2:N
         %         text(Field.L/2-1, Field.W/2, ['alpha = ' num2str(displayangle) '°']);
         %         text(Field.L/2-1, Field.W/2-1/2, ['distance = ' num2str(displaydistance) ' m']);
         %         text(Field.L/2-1, Field.W - 0.5, trajectory.name);
-        
+        j
         text(10.5, 6, ['time = ' num2str(Field.t) ' secs']);
         text(10.5, 5.5, ['angle = ' num2str(displayangle) '°']);
         text(10.5, 5, ['distance = ' num2str(displaydistance) ' m']);
