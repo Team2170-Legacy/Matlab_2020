@@ -4,22 +4,16 @@ RobotStartY = (Field.W - Field.CornerY) - (targetZone/2);
 RobotStartX = AutoLineRed.C1_x;
 
 To_PwrPort_R.x =   [   RobotStartX...
-                       % RobotStartX-0.25...
-                     %RobotStartX-0.5...
                      RobotStartX-1.0...
-                    Robot.L/2
-                ];
+                    Robot.L/2];
             
-RobotStartTangentX = To_PwrPort_R.x(1)-To_PwrPort_R.x(5);
+RobotStartTangentX = To_PwrPort_R.x(1)-To_PwrPort_R.x(3);
 
 To_PwrPort_R.y =   [   RobotStartY+Robot.W+RobotSep...
-                       % RobotStartY+Robot.W+RobotSep-0.0953...
-                     %RobotStartY+Robot.W+RobotSep-0.2859...
                      RobotStartY...
-                    RobotStartY
-                ];
+                    RobotStartY];
             
-RobotStartTangentY = To_PwrPort_R.y(1)-To_PwrPort_R.y(5);
+RobotStartTangentY = To_PwrPort_R.y(1)-To_PwrPort_R.y(3);
 
 %RSLCLS.x = [Field.RSLC.x, (Field.RSwitch.RightP.tr_x + Field.RSwitch.RightP.tl_x)/2 + RSLCLS.add_x, (Field.RSwitch.RightP.tr_x + Field.RSwitch.RightP.tl_x)/2 + RSLCLS.add_x];
 %RSLCLS.y = [Field.RSLC.y, Field.RSLC.y, Field.RSwitch.LeftP.tr_y+Robot.L/2 + RSLCLS.add_y];
