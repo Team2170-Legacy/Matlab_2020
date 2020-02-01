@@ -269,7 +269,7 @@ for i=2:N
     %   Add Vision Blending at end of move when t >= t_auto_end !!!!
     
     
-    if (t>=t_auto_end) && (target_distance>18*in) && (t_camera>=Ts_camera),
+    if 0, %****(t>=t_auto_end) && (target_distance>18*in) && (t_camera>=Ts_camera),
         t_camera            = Ts;
         
         %   Calculate e_Gear_x [pixels]
@@ -295,16 +295,16 @@ for i=2:N
     %   Use a Ts_camera delayed image error to simulate a delay in
     %   processing camera images
     
-    if camera_delay,
-        delta_vL        = +Kp * e_Gear_x_previous;
-        delta_vR        = -Kp * e_Gear_x_previous;
-    else
-        
-        delta_vL        = +Kp * e_Gear_x;
-        delta_vR        = -Kp * e_Gear_x;
-        
-    end
-    
+%     if camera_delay,
+%         delta_vL        = +Kp * e_Gear_x_previous;
+%         delta_vR        = -Kp * e_Gear_x_previous;
+%     else
+%         
+%         delta_vL        = +Kp * e_Gear_x;
+%         delta_vR        = -Kp * e_Gear_x;
+%         
+%     end
+%     
     
     delta_wL        = delta_vL / Robot.R;
     delta_wR        = delta_vR / Robot.R;
