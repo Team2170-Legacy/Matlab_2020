@@ -23,3 +23,7 @@ redTargetText = text(0, 6, 'Red Target Port', 'FontSize', 7, 'color', [1 0 0]);
 blueTargetText = text(15, 2.5, 'Blue Target Port', 'FontSize', 7, 'color', [0 0 1]);
 redLoadingText = text(15, 6, 'Red Loading Port', 'FontSize', 7, 'color', [1 0 0]);
 blueLoadingText = text(0, 2.5, 'Blue Loading Port', 'FontSize', 7, 'color', [0 0 1]);
+
+%rendevous text
+redRendText = text(6.5, 4.5, 'Red Rendevous', 'Rotation', 22.5, 'FontSize', 7, 'color', [1 0 0]);
+blueRendText = text(7.25, 2.9, 'Blue Rendevous', 'Rotation', 22.5, 'FontSize', 7, 'color', [0 0 1]);
