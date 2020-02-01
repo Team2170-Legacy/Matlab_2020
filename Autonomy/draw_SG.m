@@ -81,4 +81,7 @@ SGQ4S(2) = SGQ4S(2) + halfFieldW;
 %[((SGQ1S(2) + SGQ4S(2))/2) ((SGQ2S(2) + SGQ3S(2))/2)]
 plot([((SGQ1S(1) + SGQ4S(1))/2) ((SGQ2S(1) + SGQ3S(1))/2)], [((SGQ1S(2) + SGQ4S(2))/2) ((SGQ2S(2) + SGQ3S(2))/2)], 'k-');
 
-plot([SGQ1S(1) SGQ2S(1) SGQ3S(1) SGQ4S(1) SGQ1S(1)], [SGQ1S(2) SGQ2S(2) SGQ3S(2) SGQ4S(2) SGQ1S(2)], 'color', [0 0 0]);
+plot([((SGQ1S(1) + SGQ4S(1))/2) SGQ1S(1) SGQ2S(1) ((SGQ2S(1) + SGQ3S(1))/2)], [((SGQ1S(2) + SGQ4S(2))/2) SGQ1S(2) SGQ2S(2) ((SGQ2S(2) + SGQ3S(2))/2)], 'color', [1 0 0]);
+plot([((SGQ2S(1) + SGQ3S(1))/2) SGQ3S(1) SGQ4S(1) ((SGQ1S(1) + SGQ4S(1))/2)], [((SGQ2S(2) + SGQ3S(2))/2) SGQ3S(2) SGQ4S(2) ((SGQ1S(2) + SGQ4S(2))/2)], 'color', [0 0 1]);
+
+%plot([SGQ1S(1) SGQ2S(1) SGQ3S(1) SGQ4S(1) SGQ1S(1)], [SGQ1S(2) SGQ2S(2) SGQ3S(2) SGQ4S(2) SGQ1S(2)], 'color', [0 0 0]);
