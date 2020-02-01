@@ -428,7 +428,7 @@ xlabel('t [s]')
 ylabel('a [m/s^2]')
 title(trajString)
 
-if 0,
+if 1,
     
     f3		= figure;				% open figure
     set(f3,'DefaultLineLineWidth',3);	% set figure to draw with thick lines by default

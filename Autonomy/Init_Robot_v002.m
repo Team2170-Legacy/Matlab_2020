@@ -51,8 +51,10 @@ Robot.R = 2.5*in  * (118+3/4)/120;         % [m]		Robot wheel radius
 Robot.BL = 6.5*in; % bumper length
 
 %   Martin Krucinski 2018-03-07
-Robot.L = 27*in+Robot.BL;		% Robot length (along the driving direction)
-Robot.W = 27*in+Robot.BL;
+%Robot.L = 27*in+Robot.BL;		% Robot length (along the driving direction)
+%Robot.W = 27*in+Robot.BL;
+Robot.L = 30.3*in;
+Robot.W = 28*in;
 %
 %   Updated Martin Krucinski 03/03/2017
 %   Per info on our robot, max speed is 12.6 fps, which is 3.84 m/s

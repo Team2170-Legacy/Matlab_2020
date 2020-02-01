@@ -2,7 +2,7 @@ LineR = AutoLineRed.C1_x; %X coord of Red Auto line
 TargetR = (Field.W - Field.CornerY) - (targetZone/2); %Y coord of target zone red
 
 To_PwrPort.x =   [   LineR...
-                    0
+                    Robot.L/2
                 ];
 
 To_PwrPort.y =   [   TargetR...

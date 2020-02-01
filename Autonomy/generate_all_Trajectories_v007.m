@@ -6,19 +6,22 @@
 %   02/25/2019 v006     preparation to use for 2019 Deep Space season
 %
 %   03/01/2019 v007     Uses simulate_robot_v008.m, simpler version
-
+S
 make_movies = true
 %make_movies = false
 
 init_Constants;
 Init_Robot_v002;
 Init_Field_v003;
+init_Trajectory_To_PwrPort_L;
+init_Trajectory_To_PwrPort_R;
 init_Trajectory_To_Trench;
 init_Trajectory_To_PwrPort;
 % 03/07/2018    New trajectory names
 %init_Trajectories_v006
 
-all_Trajectories_String = {'To_Trench'};
+%all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R'};
+all_Trajectories_String = {'To_PwrPort_R'};
 
 for traj = 1:length(all_Trajectories_String)
     cmd_str = [ 'all_Trajectories{traj} = ' all_Trajectories_String{traj} ';' ];

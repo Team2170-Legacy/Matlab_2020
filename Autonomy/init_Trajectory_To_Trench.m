@@ -1,3 +1,4 @@
+targetZone = 4*ft
 MidR = 24.6875*ft; %Y coord of midline of red trench run
 LineR = AutoLineRed.C1_x; %X coord of Red Auto line
 TargetR = (Field.W - Field.CornerY)-targetZone/2; %Y coord of target zone red
