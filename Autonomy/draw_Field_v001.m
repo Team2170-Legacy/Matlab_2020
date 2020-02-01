@@ -11,10 +11,11 @@ draw_FieldLabels();
 Field.arrX = [Field.CornerX 0 0 Field.CornerX (Field.L - Field.CornerX) Field.L Field.L (Field.L - Field.CornerX) Field.CornerX];
 Field.arrY = [Field.W (Field.W - Field.CornerY) Field.CornerY 0 0 Field.CornerY (Field.W - Field.CornerY) Field.W Field.W];
 Arcade = plot(Field.arrX, Field.arrY, 'gre');
-draw_AutoLine();
-draw_Trench();
-draw_Balls();
-draw_Ports();
+draw_AutoLine(); %Initiation Lines
+draw_Trench(); %Trench run and actual trench
+draw_Balls(); %BALLS
+draw_Ports(); %Target and Loading ports
+draw_SG(); %Shield Generator
 %draw_Trajectories();
 
 % Plot field
