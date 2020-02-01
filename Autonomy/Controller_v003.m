@@ -15,9 +15,10 @@ ref_distance =  3;  % distance where gain scaling is 1.0
 Kp_align = -6*(distance/ref_distance); 
 
 % This is 2019-03-02 tuning
-Kp = 2; 
+Kp = 8; 
+
 %Kp_omega = 0.10;
-Kp_omega = 0.075;%0.10;
+%Kp_omega = 0.075;%0.10;
 
 %   MK 2019-03-02 override Robot.v_max here to ensure IT IS INCLUDED in C-code
 Robot.v_max = 1.5;
@@ -32,6 +33,7 @@ Robot.v_max = 1.5;
 %   Robot.omega_max  was set to 1.0!!
 
 %0.04;
+%*** original value on 2020-02-01  Kp_omega = 32;
 Kp_omega = 32;
 
 % Angle
