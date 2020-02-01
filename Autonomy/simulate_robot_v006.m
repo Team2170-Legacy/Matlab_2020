@@ -38,37 +38,18 @@ plot(trajectory.x, trajectory.y, 'c-o');
 
 % Select trajectories to simulate
 if ~exist('trajectory', 'var')
-    trajectory = RSML;
-    disp(' Using a default trajectory RSML');
+    disp('Error! Variable "trajectory" does not exist!')
+    return
+    
+    %trajectory = RSML;
+    %disp(' Using a default trajectory RSML');
 end
 
 
 N   = length(trajectory.x);       % number of via points
-distances   = zeros(N-1,1);       % reserve memory space for all distances and initialize to zero
 
-for j=1:(N-1)
-    dx              = trajectory.x(j+1) - trajectory.x(j);
-    dy              = trajectory.y(j+1) - trajectory.y(j);
-    distances(j)    = sqrt(dx^2 + dy^2);
-    
-    
-end
-
-% if trajectory.x(1) ~= Field.RSM.x(1)
-%     Robot.Start_Pos.theta = 180*deg;
-%
-% else
-%     Robot.Start_Pos.theta = 0*deg;
-% end
-
-if isfield(trajectory, 'theta_start')
-    Robot.Start_Pos.theta = trajectory.theta_start;
-else
-    Robot.Start_Pos.theta = 0*deg;
-end
-
-traj_length = sum(distances);
-total_time = traj_length/trajectory.v;
+this_traj_length = traj_length(trajectory);
+total_time = this_traj_length/trajectory.v;
 
 %***2018 init_Robot_v002;        % MK init_Robot_v002 now calls init_Field_002
 
@@ -137,7 +118,8 @@ end
 
 Robot.x				= trajectory.x(1);		% [m] Robot center x-position
 Robot.y				= trajectory.y(1);		% [m] Robot center y-position
-Robot.theta			= Robot.Start_Pos.theta;	% [rad] Robot angle CCW from x-axis
+%Robot.theta			= Robot.Start_Pos.theta;	% [rad] Robot angle CCW from x-axis
+Robot.theta			= trajectory.theta_start;	% [rad] Robot angle CCW from x-axis
 
 Robot.wL			= Robot.wL0;	% [rad/s]	robot Left wheel angular velocity
 Robot.wR			= Robot.wR0;	% [rad/s]	robot Right wheel angular velocity
