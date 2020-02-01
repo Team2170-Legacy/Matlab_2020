@@ -13,16 +13,15 @@ make_movies = true
 init_Constants;
 Init_Robot_v002;
 Init_Field_v003;
-
 init_Trajectory_To_PwrPort_L;
 init_Trajectory_To_PwrPort_R;
-init_Trajectory_To_PwrPort;
-
 init_Trajectory_To_Trench;
+init_Trajectory_To_PwrPort;
+% 03/07/2018    New trajectory names
+%init_Trajectories_v006
 
-
-%all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R'};
-all_Trajectories_String = {'To_PwrPort_R'};
+all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
+%all_Trajectories_String = {'To_PwrPort_R'};
 
 for traj = 1:length(all_Trajectories_String)
     cmd_str = [ 'all_Trajectories{traj} = ' all_Trajectories_String{traj} ';' ];
@@ -50,12 +49,7 @@ for traj = 1:length(all_Trajectories)
     
     t_final     = all_t(end);
     
-    make_dot_h_file_v003(trajString, ...
-    Robot.wR_all, ...
-    Robot.wL_all, ...
-    all_t, Robot, ...
-    t_auto_end, ...
-    i_auto_end);
+    make_dot_h_file_v003(trajString, Robot.wR_all, Robot.wL_all, all_t, Robot, t_auto_end, i_auto_end)
     
 end
 
