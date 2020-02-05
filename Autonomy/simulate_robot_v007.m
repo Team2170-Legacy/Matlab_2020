@@ -92,7 +92,9 @@ Robot.e_Gear_x_all  = zeros(N,1);	% [pixels]  robot gear target vision error
 Robot.target_distance_all = zeros(N,1);	% [m]  robot camera distance to target
 
 if make_movies,
-    vWriter = VideoWriter(movie_file_name,'MPEG-4');	% initialize vide capture of simulation frames
+    
+    vWriter = VideoWriter([ 'Movies\' movie_file_name],'MPEG-4');	% initialize vide capture of simulation frames
+    
     open(vWriter);									% open movie file
     
     f1		= figure; % open figure
