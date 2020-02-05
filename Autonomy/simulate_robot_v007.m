@@ -35,8 +35,8 @@
 %   Select trajectory for testing
 trajectory = eval(trajString); %BSML
 
-% Plot trajectory
-plot(trajectory.x, trajectory.y, 'c-o');
+% Plot trajectory - This DRAWS THE TRAJECTORY OF THE ROBOT
+%plot(trajectory.x, trajectory.y, 'c-o');
 
 % Select trajectories to simulate
 if ~exist('trajectory', 'var')
@@ -92,15 +92,15 @@ Robot.e_Gear_x_all  = zeros(N,1);	% [pixels]  robot gear target vision error
 Robot.target_distance_all = zeros(N,1);	% [m]  robot camera distance to target
 
 if make_movies,
-    vWriter = VideoWriter('Robot_Movie','MPEG-4');	% initialize vide capture of simulation frames
+    vWriter = VideoWriter(movie_file_name,'MPEG-4');	% initialize vide capture of simulation frames
     open(vWriter);									% open movie file
     
     f1		= figure; % open figure
     pos = get(f1, 'position');
     set(f1,'position', [50 50 pos(3)*2 pos(4)*1.7]);
     hold on;							% ensure multiple drawing commands are overlaid on the figure
-    draw_Field_v001;
-    draw_Trajectory(trajectory);
+    %draw_Field_v001;
+    %draw_Trajectory(trajectory);
     
     axis('equal')					% ensure x & y directions are scale equally on screen
     xlim([-6*ft Field.L + 5*ft])					% [m]	set figure limits for x-axis
@@ -225,8 +225,6 @@ for i=2:N
     end
     prev_forward_flag    = forward_flag;
     
-    % Calculate distance/angle
-    %    [angle,distance] = calcAngleandDistance(carrot,Robot);
     prev_distance   = distance;
     [angle,distance] = calcAngleandDistance_v3(carrot,Robot);
     
@@ -246,11 +244,6 @@ for i=2:N
     end
     
     if (switch_direction)
-        %         if (angle<=0)
-        %             angle = (angle+180*deg);
-        %         else
-        %             angle = (angle-180*deg);
-        %         end
         angle = 0.0;        % disable all turning for a while during direction switching
     end
     
@@ -332,10 +325,6 @@ for i=2:N
     delta_wL        = delta_vL / Robot.R;
     delta_wR        = delta_vR / Robot.R;
     
-    %FRC 2018 Robot.wL        = all_omega_L(i) + delta_wL;
-    %FRC 2018 Robot.wR        = all_omega_R(i) + delta_wR;
-    
-    
     Robot.vFwd			= 1/2 * Robot.R * (Robot.wL + Robot.wR);		% [m/s] Robot Forward velocity, average of the two wheels
     Robot.omega			= (Robot.wR - Robot.wL) * Robot.R /  Robot.d;	% Robot Angular velocity
     
@@ -348,9 +337,7 @@ for i=2:N
     
     if make_movies,
         draw_Robot(Robot);						% Call function to draw Robot in figure
-        %***   plot( Robot.x, Robot.y , 'o');           % 2018 Simple single point robot for now
         
-        %****draw_Field_v001(Field);
         draw_Field_v001
         draw_Trajectory(trajectory);
         draw_Carrot(carrot);
@@ -360,19 +347,11 @@ for i=2:N
         displaydistance = (round(distance*100)/100);
         displayvFwd = (round(Robot.vFwd*100)/100);
         
-        %         text(Field.L/2-1, Field.W/2, ['alpha = ' num2str(displayangle) '°']);
-        %         text(Field.L/2-1, Field.W/2-1/2, ['distance = ' num2str(displaydistance) ' m']);
-        %         text(Field.L/2-1, Field.W - 0.5, trajectory.name);
-        j
+        %j
         text(10.5, 6, ['time = ' num2str(Field.t) ' secs']);
         text(10.5, 5.5, ['angle = ' num2str(displayangle) '°']);
         text(10.5, 5, ['distance = ' num2str(displaydistance) ' m']);
         text(10.5, 4.5,  ['vFwd = ' num2str(displayvFwd) ' m/s']);
-        
-        %isSkewed = isSkewed(Robot.C1_x, Robot.C1_y, Robot.C2_x, Robot.C2_y);
-        %text(10, Field.W/2-1,  ['isSkewed = ' num2str(isSkewed) ' m/s']);
-        
-        %        text(10, Field.W - 0.5, trajectory.name);
         
         Robot_Figure		= getframe(f1);		% Capture screenshot image of figure
         Robot_Image			= Robot_Figure.cdata;

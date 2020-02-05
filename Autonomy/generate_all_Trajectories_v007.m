@@ -21,7 +21,8 @@ init_Trajectory_To_PwrPort;
 init_Trajectory_To_Trench;
 
 
-all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
+%all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
+all_Trajectories_String = { 'To_PwrPort_L'};
 %all_Trajectories_String = {'To_PwrPort_R'};
 
 for traj = 1:length(all_Trajectories_String)
@@ -40,9 +41,9 @@ for traj = 1:length(all_Trajectories)
         
         movie_file_name = [ 'Robot_Movie_' trajString '.mp4' ];
         del_command     = ['!del ' movie_file_name];
-        copy_command    = ['!copy ' movie_file_name ' ' movie_file_name];
+        %copy_command    = ['!copy ' movie_file_name ' ' movie_file_name];
         eval(del_command);
-        eval(copy_command);
+        %eval(copy_command);
         %close all;
     end
     
