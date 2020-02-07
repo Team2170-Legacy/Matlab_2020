@@ -442,6 +442,12 @@ if 1,
 
 end
 
+% Saves all figures to folder Trajectories_Figures
+
+saveas(f2, ['Trajectories_Figures/' trajString '_F2.png']);
+saveas(f2b, ['Trajectories_Figures/' trajString '_F2b.png']);
+saveas(f3, ['Trajectories_Figures/' trajString '_F3.png']);
+
 Robot.wL_all(1)		= Robot.wL;
 Robot.wR_all(1)		= Robot.wR;
 
