@@ -3,6 +3,7 @@
 %hold on
 
 title_text = title('FRC Team 2170 Robot Simulator 2020');
+set(gca,'color',[0.4 0.4 0.4])
 %text(Field.L/2-1, Field.W/2+1/2, ['time = ' num2str(Field.t) ' secs']);
 draw_FieldLabels();
 
