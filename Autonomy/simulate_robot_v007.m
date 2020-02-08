@@ -396,7 +396,7 @@ plot(all_t, Robot.wR_all*Robot.R, 'r');	% Plot right wheel velocities in Red
 hold off
 xlabel('t [s]')
 ylabel('v [m/s]')
-title(trajString)
+title(mk_str(trajString))
 
 
 %   plot wheel accelerations
@@ -413,7 +413,7 @@ plot(all_t, Robot.aR_all*Robot.R, 'r');	% Plot right wheel velocities in Red
 hold off
 xlabel('t [s]')
 ylabel('a [m/s^2]')
-title(trajString)
+title(mk_str(trajString))
 
 if 1,
     
@@ -438,7 +438,7 @@ if 1,
     
     xlabel('t [s]')
 
-    title(trajString)
+    title(mk_str(trajString))
 
 end
 
