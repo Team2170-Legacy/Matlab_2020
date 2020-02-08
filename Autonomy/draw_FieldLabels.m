@@ -1,7 +1,7 @@
 %vertical sector text
-blueSectorText = text(1.5,2.5,'Blue Sector','Rotation',90,'FontSize',10, 'color', [0 0 1]);
+blueSectorText = text(1.5,3.1,'Blue Sector','Rotation',90,'FontSize',10, 'color', [0 0 1]);
 %blueSectorText.Color = [0 0 1];
-redSectorText = text(15,5.25,'Red Sector','Rotation',-90,'FontSize',10, 'color', [1 0 0]);
+redSectorText = text(15,5.4,'Red Sector','Rotation',-90,'FontSize',10, 'color', [1 0 0]);
 %redSectorText.Color = [1 0 0];
 
 %initiation line text
