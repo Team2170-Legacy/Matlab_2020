@@ -40,6 +40,7 @@ scatter(time(visionActive_idx), omega(visionActive_idx), 'R', 'LineWidth', 2);
 scatter(time(visionInactive_idx), omega(visionInactive_idx), 'B', 'LineWidth', 2);
 ylabel('Omega');
 legend('Vision Drive Active','Vision Drive Inactive');
+title('Omega vs. Time');
 
 ax2 = subplot(2,1,2);
 hold on; 
@@ -48,6 +49,7 @@ scatter(time(visionInactive_idx), angleError(visionInactive_idx), 'B', 'LineWidt
 xlabel('Time [s]');
 ylabel('tx [deg]');
 legend('Vision Drive Active','Vision Drive Inactive');
+title('Angle Error vs. Time');
 
 linkaxes([ax1 ax2],'x');
 
@@ -61,6 +63,7 @@ scatter(time(visionActive_idx), speed(visionActive_idx), 'R', 'LineWidth', 2);
 scatter(time(visionInactive_idx), speed(visionInactive_idx), 'B', 'LineWidth', 2);
 ylabel('Speed [ft/s]');
 legend('Vision Drive Active','Vision Drive Inactive');
+title('Speed vs. Time');
 
 ax2 = subplot(2,1,2);
 hold on; 
@@ -69,3 +72,4 @@ plot(time(visionInactive_idx), distanceError(visionInactive_idx), 'B.', 'LineWid
 xlabel('Time [s]');
 ylabel('Distance Error [ft]');
 legend('Vision Drive Active','Vision Drive Inactive');
+title('Distance Error vs. Time');
