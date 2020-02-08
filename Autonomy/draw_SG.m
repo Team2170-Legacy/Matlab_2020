@@ -1,134 +1,134 @@
-SGTiltAngle = 22.5; %degrees
+SG.TiltAngle = 22.5; %degrees
 
-SGLength = 14*ft + 3/4*in; %corner of baseplate to other baseplate on same side
-SGWidth = 13*ft + 3/2*in; %corner of baseplate to other baseplate on same side
+SG.Length = 14*ft + 3/4*in; %corner of baseplate to other baseplate on same side
+SG.Width = 13*ft + 3/2*in; %corner of baseplate to other baseplate on same side
 
-SGHalfLength = SGLength/2;
-SGHalfWidth = SGWidth/2;
+SG.HalfLength = SG.Length/2;
+SG.HalfWidth = SG.Width/2;
 
-halfFieldL = Field.L/2;
-halfFieldW = Field.W/2;
+SG.HalfField.L = Field.L/2;
+SG.HalfField.W = Field.W/2;
 
 origin.x = 0;
 origin.y = 0;
 
-originalAngle = atand(SGHalfWidth/SGHalfLength);
-diagonal = sqrt(SGHalfLength ^ 2 + SGHalfWidth ^ 2);
+originalAngle = atand(SG.HalfWidth/SG.HalfLength);
+diagonal = sqrt(SG.HalfLength ^ 2 + SG.HalfWidth ^ 2);
 
 %quadrant 1 new points
 %original points
 %SG = shield generator, Q = quadrant, 1-4, B or S is big/small radius
-SGQ1B = [origin.x + SGHalfLength; origin.y + SGHalfWidth];
-SGQ1S = [origin.x + SGHalfLength - 1*ft; origin.y + SGHalfWidth - 1*ft];
-SGQ2B = [origin.x - SGHalfLength; origin.y + SGHalfWidth];
-SGQ2S = [origin.x - SGHalfLength + 1*ft; origin.y + SGHalfWidth - 1*ft];
-SGQ3B = [origin.x - SGHalfLength; origin.y - SGHalfWidth];
-SGQ3S = [origin.x - SGHalfLength + 1*ft; origin.y - SGHalfWidth + 1*ft];
-SGQ4B = [origin.x + SGHalfLength; origin.y - SGHalfWidth];
-SGQ4S = [origin.x + SGHalfLength - 1*ft; origin.y - SGHalfWidth + 1*ft];
+SG.Q1.B = [origin.x + SG.HalfLength; origin.y + SG.HalfWidth];
+SG.Q1.S = [origin.x + SG.HalfLength - 1*ft; origin.y + SG.HalfWidth - 1*ft];
+SG.Q2.B = [origin.x - SG.HalfLength; origin.y + SG.HalfWidth];
+SG.Q2.S = [origin.x - SG.HalfLength + 1*ft; origin.y + SG.HalfWidth - 1*ft];
+SG.Q3.B = [origin.x - SG.HalfLength; origin.y - SG.HalfWidth];
+SG.Q3.S = [origin.x - SG.HalfLength + 1*ft; origin.y - SG.HalfWidth + 1*ft];
+SG.Q4.B = [origin.x + SG.HalfLength; origin.y - SG.HalfWidth];
+SG.Q4.S = [origin.x + SG.HalfLength - 1*ft; origin.y - SG.HalfWidth + 1*ft];
 
 %rest of the points to show truss
 %L and R here represent left and right side points in comparison to SGQ_B
-SGQ1L = [origin.x + SGHalfLength - 1*ft; origin.y + SGHalfWidth];
-SGQ1R = [origin.x + SGHalfLength; origin.y + SGHalfWidth - 1*ft];
-SGQ2L = [origin.x - SGHalfLength; origin.y + SGHalfWidth - 1*ft];
-SGQ2R = [origin.x - SGHalfLength + 1*ft; origin.y + SGHalfWidth];
-SGQ3L = [origin.x - SGHalfLength + 1*ft; origin.y - SGHalfWidth];
-SGQ3R = [origin.x - SGHalfLength; origin.y - SGHalfWidth + 1*ft];
-SGQ4L = [origin.x + SGHalfLength; origin.y - SGHalfWidth + 1*ft];
-SGQ4R = [origin.x + SGHalfLength - 1*ft; origin.y - SGHalfWidth];
+SG.Q1.L = [origin.x + SG.HalfLength - 1*ft; origin.y + SG.HalfWidth];
+SG.Q1.R = [origin.x + SG.HalfLength; origin.y + SG.HalfWidth - 1*ft];
+SG.Q2.L = [origin.x - SG.HalfLength; origin.y + SG.HalfWidth - 1*ft];
+SG.Q2.R = [origin.x - SG.HalfLength + 1*ft; origin.y + SG.HalfWidth];
+SG.Q3.L = [origin.x - SG.HalfLength + 1*ft; origin.y - SG.HalfWidth];
+SG.Q3.R = [origin.x - SG.HalfLength; origin.y - SG.HalfWidth + 1*ft];
+SG.Q4.L = [origin.x + SG.HalfLength; origin.y - SG.HalfWidth + 1*ft];
+SG.Q4.R = [origin.x + SG.HalfLength - 1*ft; origin.y - SG.HalfWidth];
 
 hold on;
 axis equal;
 
-% plot(SGQ1B(1), SGQ1B(2), 'b*');
-% plot(SGQ2B(1), SGQ2B(2), 'b*');
-% plot(SGQ3B(1), SGQ3B(2), 'b*');
-% plot(SGQ4B(1), SGQ4B(2), 'b*');
+% plot(SG.Q1.B(1), SG.Q1.B(2), 'b*');
+% plot(SG.Q2.B(1), SG.Q2.B(2), 'b*');
+% plot(SG.Q3.B(1), SG.Q3.B(2), 'b*');
+% plot(SG.Q4.B(1), SG.Q4.B(2), 'b*');
 
 
 
 %matrix for rotations
-SGRotMatrix = [cosd(SGTiltAngle) -1*sind(SGTiltAngle); sind(SGTiltAngle) cosd(SGTiltAngle)];
+SGRotMatrix = [cosd(SG.TiltAngle) -1*sind(SG.TiltAngle); sind(SG.TiltAngle) cosd(SG.TiltAngle)];
 
 %multiply inside and outside corners
-SGQ1B = SGRotMatrix * SGQ1B;
-SGQ1S = SGRotMatrix * SGQ1S;
-SGQ2B = SGRotMatrix * SGQ2B;
-SGQ2S = SGRotMatrix * SGQ2S;
-SGQ3B = SGRotMatrix * SGQ3B;
-SGQ3S = SGRotMatrix * SGQ3S;
-SGQ4B = SGRotMatrix * SGQ4B;
-SGQ4S = SGRotMatrix * SGQ4S;
+SG.Q1.B = SGRotMatrix * SG.Q1.B;
+SG.Q1.S = SGRotMatrix * SG.Q1.S;
+SG.Q2.B = SGRotMatrix * SG.Q2.B;
+SG.Q2.S = SGRotMatrix * SG.Q2.S;
+SG.Q3.B = SGRotMatrix * SG.Q3.B;
+SG.Q3.S = SGRotMatrix * SG.Q3.S;
+SG.Q4.B = SGRotMatrix * SG.Q4.B;
+SG.Q4.S = SGRotMatrix * SG.Q4.S;
 
 %multiply other truss corners
-SGQ1L = SGRotMatrix * SGQ1L;
-SGQ1R = SGRotMatrix * SGQ1R;
-SGQ2L = SGRotMatrix * SGQ2L;
-SGQ2R = SGRotMatrix * SGQ2R;
-SGQ3L = SGRotMatrix * SGQ3L;
-SGQ3R = SGRotMatrix * SGQ3R;
-SGQ4L = SGRotMatrix * SGQ4L;
-SGQ4R = SGRotMatrix * SGQ4R;
+SG.Q1.L = SGRotMatrix * SG.Q1.L;
+SG.Q1.R = SGRotMatrix * SG.Q1.R;
+SG.Q2.L = SGRotMatrix * SG.Q2.L;
+SG.Q2.R = SGRotMatrix * SG.Q2.R;
+SG.Q3.L = SGRotMatrix * SG.Q3.L;
+SG.Q3.R = SGRotMatrix * SG.Q3.R;
+SG.Q4.L = SGRotMatrix * SG.Q4.L;
+SG.Q4.R = SGRotMatrix * SG.Q4.R;
 
 %plot inside and outside corners, everything is commented because the lines
 %will later include these points
-% plot(SGQ1B(1) + Field.L/2, SGQ1B(2) + Field.W/2, 'k*');
-% plot(SGQ2B(1) + Field.L/2, SGQ2B(2) + Field.W/2, 'k*');
-% plot(SGQ3B(1) + Field.L/2, SGQ3B(2) + Field.W/2, 'k*');
-% plot(SGQ4B(1) + Field.L/2, SGQ4B(2) + Field.W/2, 'k*');
-% plot(SGQ1S(1) + Field.L/2, SGQ1S(2) + Field.W/2, 'r*');
-% plot(SGQ2S(1) + Field.L/2, SGQ2S(2) + Field.W/2, 'r*');
-% plot(SGQ3S(1) + Field.L/2, SGQ3S(2) + Field.W/2, 'b*');
-% plot(SGQ4S(1) + Field.L/2, SGQ4S(2) + Field.W/2, 'b*');
+% plot(SG.Q1.B(1) + Field.L/2, SG.Q1.B(2) + Field.W/2, 'k*');
+% plot(SG.Q2.B(1) + Field.L/2, SG.Q2.B(2) + Field.W/2, 'k*');
+% plot(SG.Q3.B(1) + Field.L/2, SG.Q3.B(2) + Field.W/2, 'k*');
+% plot(SG.Q4.B(1) + Field.L/2, SG.Q4.B(2) + Field.W/2, 'k*');
+% plot(SG.Q1.S(1) + Field.L/2, SG.Q1.S(2) + Field.W/2, 'r*');
+% plot(SG.Q2.S(1) + Field.L/2, SG.Q2.S(2) + Field.W/2, 'r*');
+% plot(SG.Q3.S(1) + Field.L/2, SG.Q3.S(2) + Field.W/2, 'b*');
+% plot(SG.Q4.S(1) + Field.L/2, SG.Q4.S(2) + Field.W/2, 'b*');
 
 %transform inside and outside corners to center of field
-SGQ1B(1) = SGQ1B(1) + halfFieldL;
-SGQ2B(1) = SGQ2B(1) + halfFieldL;
-SGQ3B(1) = SGQ3B(1) + halfFieldL;
-SGQ4B(1) = SGQ4B(1) + halfFieldL;
-SGQ1S(1) = SGQ1S(1) + halfFieldL;
-SGQ2S(1) = SGQ2S(1) + halfFieldL;
-SGQ3S(1) = SGQ3S(1) + halfFieldL;
-SGQ4S(1) = SGQ4S(1) + halfFieldL;
+SG.Q1.B(1) = SG.Q1.B(1) + SG.HalfField.L;
+SG.Q2.B(1) = SG.Q2.B(1) + SG.HalfField.L;
+SG.Q3.B(1) = SG.Q3.B(1) + SG.HalfField.L;
+SG.Q4.B(1) = SG.Q4.B(1) + SG.HalfField.L;
+SG.Q1.S(1) = SG.Q1.S(1) + SG.HalfField.L;
+SG.Q2.S(1) = SG.Q2.S(1) + SG.HalfField.L;
+SG.Q3.S(1) = SG.Q3.S(1) + SG.HalfField.L;
+SG.Q4.S(1) = SG.Q4.S(1) + SG.HalfField.L;
 %now the y values
-SGQ1B(2) = SGQ1B(2) + halfFieldW;
-SGQ2B(2) = SGQ2B(2) + halfFieldW;
-SGQ3B(2) = SGQ3B(2) + halfFieldW;
-SGQ4B(2) = SGQ4B(2) + halfFieldW;
-SGQ1S(2) = SGQ1S(2) + halfFieldW;
-SGQ2S(2) = SGQ2S(2) + halfFieldW;
-SGQ3S(2) = SGQ3S(2) + halfFieldW;
-SGQ4S(2) = SGQ4S(2) + halfFieldW;
+SG.Q1.B(2) = SG.Q1.B(2) + SG.HalfField.W;
+SG.Q2.B(2) = SG.Q2.B(2) + SG.HalfField.W;
+SG.Q3.B(2) = SG.Q3.B(2) + SG.HalfField.W;
+SG.Q4.B(2) = SG.Q4.B(2) + SG.HalfField.W;
+SG.Q1.S(2) = SG.Q1.S(2) + SG.HalfField.W;
+SG.Q2.S(2) = SG.Q2.S(2) + SG.HalfField.W;
+SG.Q3.S(2) = SG.Q3.S(2) + SG.HalfField.W;
+SG.Q4.S(2) = SG.Q4.S(2) + SG.HalfField.W;
 
 %transform truss corners
-SGQ1L(1) = SGQ1L(1) + halfFieldL;
-SGQ1R(1) = SGQ1R(1) + halfFieldL;
-SGQ2L(1) = SGQ2L(1) + halfFieldL;
-SGQ2R(1) = SGQ2R(1) + halfFieldL;
-SGQ3L(1) = SGQ3L(1) + halfFieldL;
-SGQ3R(1) = SGQ3R(1) + halfFieldL;
-SGQ4L(1) = SGQ4L(1) + halfFieldL;
-SGQ4R(1) = SGQ4R(1) + halfFieldL;
+SG.Q1.L(1) = SG.Q1.L(1) + SG.HalfField.L;
+SG.Q1.R(1) = SG.Q1.R(1) + SG.HalfField.L;
+SG.Q2.L(1) = SG.Q2.L(1) + SG.HalfField.L;
+SG.Q2.R(1) = SG.Q2.R(1) + SG.HalfField.L;
+SG.Q3.L(1) = SG.Q3.L(1) + SG.HalfField.L;
+SG.Q3.R(1) = SG.Q3.R(1) + SG.HalfField.L;
+SG.Q4.L(1) = SG.Q4.L(1) + SG.HalfField.L;
+SG.Q4.R(1) = SG.Q4.R(1) + SG.HalfField.L;
 %now y values
-SGQ1L(2) = SGQ1L(2) + halfFieldW;
-SGQ1R(2) = SGQ1R(2) + halfFieldW;
-SGQ2L(2) = SGQ2L(2) + halfFieldW;
-SGQ2R(2) = SGQ2R(2) + halfFieldW;
-SGQ3L(2) = SGQ3L(2) + halfFieldW;
-SGQ3R(2) = SGQ3R(2) + halfFieldW;
-SGQ4L(2) = SGQ4L(2) + halfFieldW;
-SGQ4R(2) = SGQ4R(2) + halfFieldW;
+SG.Q1.L(2) = SG.Q1.L(2) + SG.HalfField.W;
+SG.Q1.R(2) = SG.Q1.R(2) + SG.HalfField.W;
+SG.Q2.L(2) = SG.Q2.L(2) + SG.HalfField.W;
+SG.Q2.R(2) = SG.Q2.R(2) + SG.HalfField.W;
+SG.Q3.L(2) = SG.Q3.L(2) + SG.HalfField.W;
+SG.Q3.R(2) = SG.Q3.R(2) + SG.HalfField.W;
+SG.Q4.L(2) = SG.Q4.L(2) + SG.HalfField.W;
+SG.Q4.R(2) = SG.Q4.R(2) + SG.HalfField.W;
 
 %plot line between rendevous boxes
-plot([((SGQ1S(1) + SGQ4S(1))/2) ((SGQ2S(1) + SGQ3S(1))/2)], [((SGQ1S(2) + SGQ4S(2))/2) ((SGQ2S(2) + SGQ3S(2))/2)], 'k-');
+plot([((SG.Q1.S(1) + SG.Q4.S(1))/2) ((SG.Q2.S(1) + SG.Q3.S(1))/2)], [((SG.Q1.S(2) + SG.Q4.S(2))/2) ((SG.Q2.S(2) + SG.Q3.S(2))/2)], 'k-');
 
 %plot boundary lines
-plot([((SGQ1S(1) + SGQ4S(1))/2) SGQ1S(1) SGQ2S(1) ((SGQ2S(1) + SGQ3S(1))/2)], [((SGQ1S(2) + SGQ4S(2))/2) SGQ1S(2) SGQ2S(2) ((SGQ2S(2) + SGQ3S(2))/2)], 'color', [1 0 0]);
-plot([((SGQ2S(1) + SGQ3S(1))/2) SGQ3S(1) SGQ4S(1) ((SGQ1S(1) + SGQ4S(1))/2)], [((SGQ2S(2) + SGQ3S(2))/2) SGQ3S(2) SGQ4S(2) ((SGQ1S(2) + SGQ4S(2))/2)], 'color', [0 0 1]);
+plot([((SG.Q1.S(1) + SG.Q4.S(1))/2) SG.Q1.S(1) SG.Q2.S(1) ((SG.Q2.S(1) + SG.Q3.S(1))/2)], [((SG.Q1.S(2) + SG.Q4.S(2))/2) SG.Q1.S(2) SG.Q2.S(2) ((SG.Q2.S(2) + SG.Q3.S(2))/2)], 'color', [1 0 0]);
+plot([((SG.Q2.S(1) + SG.Q3.S(1))/2) SG.Q3.S(1) SG.Q4.S(1) ((SG.Q1.S(1) + SG.Q4.S(1))/2)], [((SG.Q2.S(2) + SG.Q3.S(2))/2) SG.Q3.S(2) SG.Q4.S(2) ((SG.Q1.S(2) + SG.Q4.S(2))/2)], 'color', [0 0 1]);
 
 %plot trusses, color
-plot([SGQ1B(1) SGQ1L(1) SGQ1S(1) SGQ1R(1) SGQ1B(1)], [SGQ1B(2) SGQ1L(2) SGQ1S(2) SGQ1R(2) SGQ1B(2)], 'k-'); %Q1
-plot([SGQ2B(1) SGQ2L(1) SGQ2S(1) SGQ2R(1) SGQ2B(1)], [SGQ2B(2) SGQ2L(2) SGQ2S(2) SGQ2R(2) SGQ2B(2)], 'k-'); %Q2
-plot([SGQ3B(1) SGQ3L(1) SGQ3S(1) SGQ3R(1) SGQ3B(1)], [SGQ3B(2) SGQ3L(2) SGQ3S(2) SGQ3R(2) SGQ3B(2)], 'k-'); %Q3
-plot([SGQ4B(1) SGQ4L(1) SGQ4S(1) SGQ4R(1) SGQ4B(1)], [SGQ4B(2) SGQ4L(2) SGQ4S(2) SGQ4R(2) SGQ4B(2)], 'k-'); %Q4
+plot([SG.Q1.B(1) SG.Q1.L(1) SG.Q1.S(1) SG.Q1.R(1) SG.Q1.B(1)], [SG.Q1.B(2) SG.Q1.L(2) SG.Q1.S(2) SG.Q1.R(2) SG.Q1.B(2)], 'k-'); %Q1
+plot([SG.Q2.B(1) SG.Q2.L(1) SG.Q2.S(1) SG.Q2.R(1) SG.Q2.B(1)], [SG.Q2.B(2) SG.Q2.L(2) SG.Q2.S(2) SG.Q2.R(2) SG.Q2.B(2)], 'k-'); %Q2
+plot([SG.Q3.B(1) SG.Q3.L(1) SG.Q3.S(1) SG.Q3.R(1) SG.Q3.B(1)], [SG.Q3.B(2) SG.Q3.L(2) SG.Q3.S(2) SG.Q3.R(2) SG.Q3.B(2)], 'k-'); %Q3
+plot([SG.Q4.B(1) SG.Q4.L(1) SG.Q4.S(1) SG.Q4.R(1) SG.Q4.B(1)], [SG.Q4.B(2) SG.Q4.L(2) SG.Q4.S(2) SG.Q4.R(2) SG.Q4.B(2)], 'k-'); %Q4
