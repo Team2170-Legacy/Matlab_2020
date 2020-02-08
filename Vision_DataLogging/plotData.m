@@ -33,8 +33,9 @@ legend('Vision Drive Active','Vision Drive Inactive');
 %% Plot angle error and omega vs. time when VisionDrive is active/inactive
 omega = data.Omega;
 
-figure; grid on;
+figure;
 ax1 = subplot(2,1,1);
+grid on
 hold on; 
 scatter(time(visionActive_idx), omega(visionActive_idx), 'R', 'LineWidth', 2);
 scatter(time(visionInactive_idx), omega(visionInactive_idx), 'B', 'LineWidth', 2);
@@ -43,6 +44,7 @@ legend('Vision Drive Active','Vision Drive Inactive');
 title('Omega vs. Time');
 
 ax2 = subplot(2,1,2);
+grid on
 hold on; 
 scatter(time(visionActive_idx), angleError(visionActive_idx), 'R', 'LineWidth', 2);
 scatter(time(visionInactive_idx), angleError(visionInactive_idx), 'B', 'LineWidth', 2);
@@ -56,8 +58,9 @@ linkaxes([ax1 ax2],'x');
 %% Plot speed and distance error vs time when VisionDrive is active/inactive
 speed = data.Speed;
 
-figure; grid on;
+figure;
 ax1 = subplot(2,1,1);
+grid on
 hold on; 
 scatter(time(visionActive_idx), speed(visionActive_idx), 'R', 'LineWidth', 2);
 scatter(time(visionInactive_idx), speed(visionInactive_idx), 'B', 'LineWidth', 2);
@@ -66,6 +69,7 @@ legend('Vision Drive Active','Vision Drive Inactive');
 title('Speed vs. Time');
 
 ax2 = subplot(2,1,2);
+grid on
 hold on; 
 plot(time(visionActive_idx), distanceError(visionActive_idx), 'R.', 'LineWidth', 2);
 plot(time(visionInactive_idx), distanceError(visionInactive_idx), 'B.', 'LineWidth', 2);
