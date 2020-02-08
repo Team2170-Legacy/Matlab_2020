@@ -39,7 +39,8 @@ Kp_omega = 32;
 % Angle
 
 stop_turning_distance   = 1;    % [ft]  distance when steering control stops
-start_cruising_distance = 0;%0.5;%***1;    % [ft]  distance when velocity
+%start_cruising_distance = 0;%0.5;%***1;    % [ft]  distance when velocity
+start_cruising_distance = -9999;%0.5;%***1;    % [ft]  distance when velocity
 %       P-control turns off and cruising at
 %       constant velocity starts
 

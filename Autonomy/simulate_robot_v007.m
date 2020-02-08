@@ -250,7 +250,8 @@ for i=2:N
     end
     
     % Controller code
-    [v,omega] = Controller_v003(distance, angle, Robot);
+%    [v,omega] = Controller_v003(distance, angle, Robot);
+    [v,omega] = Controller_v003(-distance, angle, Robot);
     
     % Convert v and omega to omega_l and omega_r, i.e Robot.wL, Robot.wR
     %   vL - left wheel surface velocity [m/s] (NOT angular)

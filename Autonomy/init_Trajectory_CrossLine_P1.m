@@ -18,3 +18,7 @@ CrossLine_P1.v = 1.6;
 CrossLine_P1.t_final = traj_length(CrossLine_P1) / CrossLine_P1.v  * 1.3;
 CrossLine_P1.name = 'Cross Line P1';
 CrossLine_P1.theta_start = 180*deg;
+CrossLine_P1.Drive_Forward = [...
+    false
+    false
+    ];
