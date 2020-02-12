@@ -15,7 +15,7 @@ init_Constants
 
 %   Martin Krucinski 2018-03-07
 %*** removed speed limit 2018-03-31 Robot.v_max = 3.6;    % Robot max velocity (on each R / L drive wheel)
-Robot.v_max = 1.5%3.0;    % Robot max velocity (on each R / L drive wheel)
+Robot.v_max = 3.0%3.0;    % Robot max velocity (on each R / L drive wheel)
 
 
 
@@ -70,7 +70,7 @@ Robot.W = 28*in;
 %*** use 1 rev / s instead
 Robot.omega_max = 2*pi*1; % Robot max angular velocity (rad/s)
 
-Robot.a_max = 3;        %Robot assumed acceleration
+Robot.a_max =  6 * 3.4;        %Robot assumed acceleration
 
 %init_Field_v002;
 % FRC2018  init_Field_v005;

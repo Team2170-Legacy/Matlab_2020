@@ -250,28 +250,45 @@ for i=2:N
     end
     
     % Controller code
-%    [v,omega] = Controller_v003(distance, angle, Robot);
-    [v,omega] = Controller_v003(-distance, angle, Robot);
+    [v,omega] = Controller_v003(distance, angle, Robot);
+%    [v,omega] = Controller_v003(-distance, angle, Robot);
     
     % Convert v and omega to omega_l and omega_r, i.e Robot.wL, Robot.wR
     %   vL - left wheel surface velocity [m/s] (NOT angular)
     %   vR - right          -"-
     
-    temp_amax    = 30;%*** 15 UNSTABLE 15;   % temporary max acceleration
+    %acceleration limit enforcement
+    %temp_amax    = 30;%*** 15 UNSTABLE 15;   % temporary max acceleration
+     temp_amax    = Robot.a_max;%*** 15 UNSTABLE 15;   % temporary max acceleration
     
-    vL_temp         = v - omega*Robot.d/2;
-    if vL_temp >= vL_prev,
-        vL   =  min( vL_temp, vL_prev + temp_amax*Ts);
+%     vL_temp2 = v - omega*Robot.d/2;
+    vL_temp = v - omega*Robot.d/2;
+    vR_temp = v + omega*Robot.d/2;
+    
+    if vL_temp >= vL_prev
+        vL = min( vL_temp, vL_prev + temp_amax*Ts);
     else % vL_temp < vL_prev
-        vL   =  max( vL_temp, vL_prev - temp_amax*Ts);
+        vL = max( vL_temp, vL_prev - temp_amax*Ts);
     end
         
-    vR_temp          = v + omega*Robot.d/2;
-    if vR_temp >= vR_prev,
-        vR   =  min( vR_temp, vR_prev + temp_amax*Ts);
+    if vR_temp >= vR_prev
+        vR = min( vR_temp, vR_prev + temp_amax*Ts);
     else % vR_temp < vR_prev
-        vR   =  max( vR_temp, vR_prev - temp_amax*Ts);
-    end    
+        vR = max( vR_temp, vR_prev - temp_amax*Ts);
+    end   
+    
+    %velocity limit enforcement
+    if vL > Robot.v_max
+        vL = Robot.v_max;
+    elseif vL < -Robot.v_max
+        vL = -Robot.v_max;
+    end
+    
+    if vR > Robot.v_max
+        vR = Robot.v_max;
+    elseif vR < -Robot.v_max
+        vR = -Robot.v_max;
+    end
     
     vL_prev = vL;
     vR_prev = vR;
