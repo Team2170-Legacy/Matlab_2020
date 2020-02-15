@@ -18,7 +18,8 @@ init_Trajectory_To_PwrPort_L;
 init_Trajectory_To_PwrPort_R;
 init_Trajectory_To_PwrPort;
 
-init_Trajectory_To_Trench;
+% init_Trajectory_To_Trench;
+init_Trajectory_To_Trench_v002;
 
 init_Trajectory_CrossLine_P1;
 init_Trajectory_CrossLine_P2;
