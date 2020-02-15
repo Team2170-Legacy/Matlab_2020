@@ -19,8 +19,13 @@ To_Trench.y = [
     To_Trench.End.Y
     ];
 
-% To_Trench.v = 1.6;
-To_Trench.v = .8;
-To_Trench.t_final = traj_length(To_Trench) / To_Trench.v  * 1.3;
-To_Trench.Name = 'To Trench';
+To_Trench.v = .8.*ones(1, length(To_Trench.x) - 1);
+To_Trench.v(length(To_Trench.v)) = 1.6;
+
+To_Trench.tstamps = traj_timestamps_v002(sub_traj_lengths(To_Trench), To_Trench.v);
+To_Trench.v = [0 To_Trench.v];
+
+To_Trench.t_final = To_Trench.tstamps(length(To_Trench.tstamps));
+
+To_Trench.name = 'To Trench';
 To_Trench.theta_start = 180*deg;

@@ -51,14 +51,22 @@ end
 N   = length(trajectory.x);       % number of via points
 
 this_traj_length = traj_length(trajectory);
-total_time = this_traj_length/trajectory.v;
+
+% total_time = this_traj_length/trajectory.v;
+if length(trajectory.v) > 1
+    total_time = trajectory.tstamps(length(trajectory.tstamps));
+else
+    total_time = this_traj_length/trajectory.v;
+end
+
+
+
+Robot.wL0		= 0;		% [rad/s]	initial left wheel angular velocity
+Robot.wR0		= 0;		% [rad/s]	initial left wheel angular velocity
 
 %***2018 init_Robot_v002;        % MK init_Robot_v002 now calls init_Field_002
 
 %	initial robot wheel velocities & radius
-
-Robot.wL0		= 0;		% [rad/s]	initial left wheel angular velocity
-Robot.wR0		= 0;		% [rad/s]	initial left wheel angular velocity
 
 
 %	Initialize simulation parameters
@@ -216,7 +224,23 @@ for i=2:N
     
     
     % 3. Percentage = Current time/total trajectory time
-    percentage = t/total_time*100;
+    
+    if length(trajectory.v) > 1
+       for pCount = 1:length(trajectory.tstamps)
+           if t < trajectory.tstamps(pCount)
+%                (trajectory.tstamps(pCount - 1)/total_time*100) is
+%                percentage of <t
+%                (t -
+%                trajectory.tstamps(pCount))*((trajectory.tstamps(pCount) -
+%                trajectory.tstamps(pCount - 1))/total_time) is percentage
+%                of > last timestamp to t
+                 percentage = (trajectory.tstamps(pCount - 1)/total_time*100) + (t - trajectory.tstamps(pCount - 1))*((trajectory.tstamps(pCount) - trajectory.tstamps(pCount - 1))/total_time) * 100;
+               break
+           end
+       end
+    else
+        percentage = t/total_time*100;
+    end
     
     % Get carrot
     % [carrot] = get_Carrot(percentage, trajectory);
