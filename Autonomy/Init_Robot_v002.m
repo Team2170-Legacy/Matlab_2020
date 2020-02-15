@@ -70,7 +70,7 @@ Robot.W = 28*in;
 %*** use 1 rev / s instead
 Robot.omega_max = 2*pi*1; % Robot max angular velocity (rad/s)
 
-Robot.a_max =  6 * 3.4;        %Robot assumed acceleration
+Robot.a_max = 3.4;        %Robot assumed acceleration
 
 %init_Field_v002;
 % FRC2018  init_Field_v005;
