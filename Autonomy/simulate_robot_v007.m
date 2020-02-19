@@ -38,6 +38,10 @@ trajectory = eval(trajString); %BSML
 % Plot trajectory - This DRAWS THE TRAJECTORY OF THE ROBOT
 %plot(trajectory.x, trajectory.y, 'c-o');
 
+% f6 = figure;
+% hold on;
+% plot(t, percentage, 'r*');
+
 % Select trajectories to simulate
 if ~exist('trajectory', 'var')
     disp('Error! Variable "trajectory" does not exist!')
@@ -226,21 +230,12 @@ for i=2:N
     % 3. Percentage = Current time/total trajectory time
     
     if length(trajectory.v) > 1
-       for pCount = 1:length(trajectory.tstamps)
-           if t < trajectory.tstamps(pCount)
-%                (trajectory.tstamps(pCount - 1)/total_time*100) is
-%                percentage of <t
-%                (t -
-%                trajectory.tstamps(pCount))*((trajectory.tstamps(pCount) -
-%                trajectory.tstamps(pCount - 1))/total_time) is percentage
-%                of > last timestamp to t
-                 percentage = (trajectory.tstamps(pCount - 1)/total_time*100) + (t - trajectory.tstamps(pCount - 1))*((trajectory.tstamps(pCount) - trajectory.tstamps(pCount - 1))/total_time) * 100;
-               break
-           end
-       end
+        percentage = traj_percentage(t, trajectory.tstamps);
     else
         percentage = t/total_time*100;
     end
+    
+    
     
     % Get carrot
     % [carrot] = get_Carrot(percentage, trajectory);
