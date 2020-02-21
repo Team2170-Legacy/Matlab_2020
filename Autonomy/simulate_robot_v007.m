@@ -230,7 +230,7 @@ for i=2:N
     % 3. Percentage = Current time/total trajectory time
     
     if length(trajectory.v) > 1
-        percentage = traj_percentage(t, trajectory.tstamps);
+        percentage = traj_percentage_v002(t,trajectory.tstamps, trajectory.sub);
     else
         percentage = t/total_time*100;
     end

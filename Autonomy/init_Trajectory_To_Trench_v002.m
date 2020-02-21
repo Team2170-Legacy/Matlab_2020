@@ -19,6 +19,8 @@ To_Trench.y = [
     To_Trench.End.Y
     ];
 
+To_Trench.sub = sub_traj_lengths(To_Trench);
+
 To_Trench.v = .8.*ones(1, length(To_Trench.x) - 1);
 To_Trench.v(length(To_Trench.v)) = 1.6;
 
