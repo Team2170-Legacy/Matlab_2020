@@ -1,4 +1,4 @@
-function DriveTrainLog202002151001 = GetDriveTrainLogTable_v2(filename, dataLines)
+function shooterLog = GetShooterLogTable(filename, dataLines)
 %IMPORTFILE Import data from a text file
 %  DRIVETRAINLOG202002151001 = IMPORTFILE(FILENAME) reads data from text
 %  file FILENAME for the default selection.  Returns the data as a table.
@@ -42,6 +42,6 @@ opts = setvaropts(opts, "VarName18", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName18", "EmptyFieldRule", "auto");
 
 % Import the data
-DriveTrainLog202002151001 = readtable(filename, opts);
+shooterLog = readtable(filename, opts);
 
 end
