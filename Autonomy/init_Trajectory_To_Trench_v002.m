@@ -2,8 +2,8 @@
 %(Field.W - Field.CornerY)-targetZone/2)
 To_Trench.Start.X = AutoLineRed.C1_x; %3.05m
 To_Trench.Start.Y = (Field.W - Field.CornerY) - targetZone/2; %5.8338m
-% To_Trench.End.X = 8.5; %meters
-To_Trench.End.X = 4; %meters
+To_Trench.End.X = 8.5; %meters
+% To_Trench.End.X = 4; %meters
 To_Trench.End.Y = 24.6875*ft;
 
 To_Trench.Arc.n = 100;

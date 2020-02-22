@@ -34,7 +34,9 @@ Robot.v_max = 1.5;
 
 %0.04;
 %*** original value on 2020-02-01  Kp_omega = 32;
+
 Kp_omega = 32;
+%**Kp_omega = 16;
 
 % Angle
 
