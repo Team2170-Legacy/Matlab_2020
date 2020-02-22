@@ -14,7 +14,8 @@ init_Constants;
 Init_Robot_v002;
 Init_Field_v003;
 
-init_Trajectory_To_PwrPort_L;
+% init_Trajectory_To_PwrPort_L;
+init_Trajectory_To_PwrPort_L_v002;
 
 % init_Trajectory_To_PwrPort_R;
 init_Trajectory_To_PwrPort_R_v002;
