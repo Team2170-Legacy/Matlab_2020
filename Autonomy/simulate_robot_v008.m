@@ -430,7 +430,7 @@ while i<=N && ~stop_flag,
         
         %j
         text(10.5, 6, ['time = ' num2str(Field.t) ' secs']);
-        text(10.5, 5.5, ['angle = ' num2str(displayangle) '?']);
+        text(10.5, 5.5, ['angle = ' num2str(displayangle / deg) '°']);
         text(10.5, 5, ['distance = ' num2str(displaydistance) ' m']);
         text(10.5, 4.5,  ['vFwd = ' num2str(displayvFwd) ' m/s']);
         
@@ -488,7 +488,7 @@ Robot.wR_all        = Robot.wR_all(1:ind_end);
 Robot.target_distance_all         = Robot.target_distance_all(1:ind_end);
 all_t               = all_t(1:ind_end);
 
-
+%   plot wheel velocities
 
 f2		= figure;				% open figure
 set(f2,'DefaultLineLineWidth',3);	% set figure to draw with thick lines by default
@@ -521,6 +521,7 @@ title(mk_str(trajString))
 if 1,
     
     f3		= figure;				% open figure
+    
     set(f3,'DefaultLineLineWidth',3);	% set figure to draw with thick lines by default
     
     subplot(311)
@@ -528,6 +529,8 @@ if 1,
     plot(all_t, Robot.x_all);	% Plot robot x-positions
     grid on							% draw a grid on the figure
     ylabel('x [m]')
+    
+    title(mk_str(trajString))
     
     subplot(312)
     plot(all_t, Robot.y_all);	% Plot robot y-positions
@@ -541,7 +544,7 @@ if 1,
     
     xlabel('t [s]')
 
-    title(mk_str(trajString))
+%     title(mk_str(trajString))
 
 end
 

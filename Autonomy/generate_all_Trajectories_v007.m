@@ -30,10 +30,10 @@ init_Trajectory_CrossLine_P2;
 init_Trajectory_CrossLine_P3;
 init_Trajectory_Test1;
 
-% all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
+all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
 % all_Trajectories_String = {'To_PwrPort_L'};
 
-all_Trajectories_String = {'To_Trench'};
+% all_Trajectories_String = {'To_Trench'};
 % all_Trajectories_String = {'Test1'};
 
 %all_Trajectories_String = { 'CrossLine_P1' 'CrossLine_P2' 'CrossLine_P3'};
