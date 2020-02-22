@@ -4,7 +4,7 @@
 %   _v2 updated 2/11/2020
 
 %% Load in data
-data = getVisionLogTable_v2('Vision_Log2020-02-11_18_18.csv', [2, Inf]);
+data = getVisionLogTable_v3('VisionLog_2020-02-22_11_37.csv', [2, Inf]);
 
 %% Plot angle error vs. time when VisionDrive is active/inactive
 visionDriveActive = data.VisionDriveActive;
