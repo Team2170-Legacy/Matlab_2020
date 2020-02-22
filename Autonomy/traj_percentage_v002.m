@@ -16,6 +16,6 @@ for pCount = 2:length(arrTstamps)
    end
 end
 
-if intTime == arrTstamps(length(arrTstamps))
+if intTime >= arrTstamps(end)
    percentz = 100; 
 end
