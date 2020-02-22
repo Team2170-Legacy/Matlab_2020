@@ -30,7 +30,7 @@ init_Trajectory_CrossLine_P3;
 init_Trajectory_Test1;
 
 % all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
-all_Trajectories_String = {'To_PwrPort_R'};
+all_Trajectories_String = {'To_PwrPort_L'};
 
 % all_Trajectories_String = {'To_Trench'};
 % all_Trajectories_String = {'Test1'};
@@ -61,7 +61,8 @@ for traj = 1:length(all_Trajectories)
     end
     
 %    simulate_robot_v006;
-    simulate_robot_v007;
+%    simulate_robot_v007;
+    simulate_robot_v008;
     
     t_final     = all_t(end);
     

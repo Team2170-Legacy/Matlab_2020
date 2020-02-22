@@ -1,6 +1,8 @@
-%	simulate_robot_v007.m
+%	simulate_robot_v008.m
 %
 %   v007 has rate limits on wheel velocities
+%
+%   v008 fix robot overshoot at the end of trajectories problem
 %
 %   For FRC 2018 PowerUp
 %   Modified for FRC 2018 Control by Adonis Canada, Priyanshu Agrawal,
@@ -31,12 +33,19 @@
 %Init_Field_v002
 %init_Trajectories_v003
 
+simulation_stop_distance    = 0.010;
+
 %   Martin Krucinski 02/08/2018
 %   Select trajectory for testing
+
 trajectory = eval(trajString); %BSML
 
 % Plot trajectory - This DRAWS THE TRAJECTORY OF THE ROBOT
 %plot(trajectory.x, trajectory.y, 'c-o');
+
+% f6 = figure;
+% hold on;
+% plot(t, percentage, 'r*');
 
 % Select trajectories to simulate
 if ~exist('trajectory', 'var')
@@ -52,34 +61,21 @@ N   = length(trajectory.x);       % number of via points
 
 this_traj_length = traj_length(trajectory);
 
-boolean multipleV = false;
+% total_time = this_traj_length/trajectory.v;
 if length(trajectory.v) > 1
-    multipleV = true;
+    total_time = trajectory.tstamps(length(trajectory.tstamps));
+else
+    total_time = this_traj_length/trajectory.v;
 end
 
-total_time = this_traj_length/trajectory.v;
 
-% if multipleV == false
-%     total_time = this_traj_length/trajectory.v;
-% else
-%     %take distance when velocity changes
-%     dchange = trajectory.dchange;
-%     total_time_num = 0;
-%     total_time = zeros(1,length(trajectory.v));
-%     for dchangeI = 1:length(trajectory.v)
-%        tempDChange = dchange/trajectory.v(dchangeI);
-%        total_time(dchangeI) = tempDChange; 
-%        total_time_num = total_time_num + tempDChange;
-%     end
-% %     trajLength = length(total_time);
-% end
+
+Robot.wL0		= 0;		% [rad/s]	initial left wheel angular velocity
+Robot.wR0		= 0;		% [rad/s]	initial left wheel angular velocity
 
 %***2018 init_Robot_v002;        % MK init_Robot_v002 now calls init_Field_002
 
 %	initial robot wheel velocities & radius
-
-Robot.wL0		= 0;		% [rad/s]	initial left wheel angular velocity
-Robot.wR0		= 0;		% [rad/s]	initial left wheel angular velocity
 
 
 %	Initialize simulation parameters
@@ -198,6 +194,8 @@ Target.y        = 2;
 Robot.wL_all		= zeros(N,1);	% [rad/s]	robot Left wheel angular velocities
 Robot.wR_all		= zeros(N,1);	% [rad/s]	robot Right wheel angular velocities
 
+ind_end             = N;
+
 switch_direction    = false;        % flag to keep track of when trajectory direction switches
 
 
@@ -211,7 +209,11 @@ distance            = 0;
 timer               = 0.0;
 
 %	Main simulation loop
-for i=2:N
+i = 2;
+stop_flag = false;
+
+%for i=2:N
+while i<=N && ~stop_flag,
     t					= all_t(i);		% [s] get current simulation time
     Robot.t				= t;
     Field.t             = t;
@@ -237,14 +239,14 @@ for i=2:N
     
     
     % 3. Percentage = Current time/total trajectory time
-    percentage = t/total_time*100;
-%     if length(total_time) > 1 && t < total_time(1)
-%        percentage = t/total_time_number*100*(total_time/total_time(1)); 
-%     elseif length(total_time) > 1 && t > total_time(1)
-%        percentage = (total_time(1)/total_time_number) + (t - total_time_number(1))/(total_time/total_time(2));
-%     else
-%        percentage = t/total_time*100;
-%     end
+    
+    if length(trajectory.v) > 1
+        percentage = traj_percentage_v002(t,trajectory.tstamps, trajectory.sub);
+    else
+        percentage = t/total_time*100;
+    end
+    
+    
     
     % Get carrot
     % [carrot] = get_Carrot(percentage, trajectory);
@@ -383,6 +385,37 @@ for i=2:N
     Robot.y				= Robot.y + Robot.vy * Ts;			% [m]	Integrate robot y-position
     Robot.theta			= Robot.theta + Robot.omega * Ts;	% [rad]	Integrate robot angle
     
+%     if make_movies,
+%         draw_Robot(Robot);						% Call function to draw Robot in figure
+%         
+%         draw_Field_v001
+%         draw_Trajectory(trajectory);
+%         draw_Carrot(carrot);
+%         
+%         
+%         displayangle = (round(angle/deg * 100)/100);
+%         displaydistance = (round(distance*100)/100);
+%         displayvFwd = (round(Robot.vFwd*100)/100);
+%         
+%         %j
+%         text(10.5, 6, ['time = ' num2str(Field.t) ' secs']);
+%         text(10.5, 5.5, ['angle = ' num2str(displayangle) '°']);
+%         text(10.5, 5, ['distance = ' num2str(displaydistance) ' m']);
+%         text(10.5, 4.5,  ['vFwd = ' num2str(displayvFwd) ' m/s']);
+%         
+%         Robot_Figure		= getframe(f1);		% Capture screenshot image of figure
+%         Robot_Image			= Robot_Figure.cdata;
+%         %	pause
+%         
+%         if i < N
+%             cla         % Erase figure in preparation for next simulation step
+%         end
+%         
+%     else
+%         clc
+%         t
+%     end    
+    
     if make_movies,
         draw_Robot(Robot);						% Call function to draw Robot in figure
         
@@ -405,10 +438,6 @@ for i=2:N
         Robot_Image			= Robot_Figure.cdata;
         %	pause
         
-        if i < N
-            cla         % Erase figure in preparation for next simulation step
-        end
-        
     else
         clc
         t
@@ -427,11 +456,39 @@ for i=2:N
     if make_movies,
         writeVideo(vWriter, Robot_Image);			% Write screenshot image to video file
     end
+    
+  
+    
+    dx  = (Robot.x - trajectory.x(end));
+    dy  = (Robot.y - trajectory.y(end));
+    
+    distance_robot_to_end_point     = sqrt( dx^2 + dy^2);
+    
+    if distance_robot_to_end_point < simulation_stop_distance,      % if robot is close to end of trajectory, stop
+        stop_flag = true;
+        ind_end = i;
+    else
+        i = i+1;
+        cla         % Erase figure in preparation for next simulation step
+    end
+    
 end
 
 if make_movies,
     close(vWriter)			% Close robot simulation video file
 end
+
+%   Shorten all trajectories based on the index where simulation stopped
+
+Robot.x_all         = Robot.x_all(1:ind_end);
+Robot.y_all         = Robot.y_all(1:ind_end);
+Robot.theta_all     = Robot.theta_all(1:ind_end);
+Robot.wL_all        = Robot.wL_all(1:ind_end);
+Robot.wR_all        = Robot.wR_all(1:ind_end);
+Robot.target_distance_all         = Robot.target_distance_all(1:ind_end);
+all_t               = all_t(1:ind_end);
+
+
 
 f2		= figure;				% open figure
 set(f2,'DefaultLineLineWidth',3);	% set figure to draw with thick lines by default
