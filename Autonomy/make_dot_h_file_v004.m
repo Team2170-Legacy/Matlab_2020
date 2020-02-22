@@ -1,6 +1,6 @@
 function status = make_dot_h_file_v004(trajectoryString,all_omega_R,all_omega_L,all_t,Robot,t_auto_end, i_auto_end)
 
-
+ft = .305;
 
 %Wheel position [rotations], velocity [rotations/s],	Ts = 10 [ms];
 
@@ -14,29 +14,44 @@ function status = make_dot_h_file_v004(trajectoryString,all_omega_R,all_omega_L,
 %   Encoder count [], Encoder counts / 100 ms [], Ts = 10 [ms];
 
 %   Encoder counts per rev on the drive wheels
-cpr         = 256*4;
-Ts_enc      = 0.100;
+% cpr         = 256*4;
+% Ts_enc      = 0.100;
 
 N =length(all_omega_R);
-enc_per_100ms_R  = all_omega_R/2/pi * cpr * Ts_enc;
-enc_per_100ms_L  = all_omega_L/2/pi * cpr * Ts_enc;
+
+%
+
+%enc_per_100ms_R  = all_omega_R/2/pi * cpr * Ts_enc;
+v_ft_s_R = all_omega_R * Robot.R / ft;
+
+% enc_per_100ms_L  = all_omega_L/2/pi * cpr * Ts_enc;
+v_ft_s_L = all_omega_L * Robot.R / ft;
 
 % enc_R  = enc_per_100ms_R * 60;
 % enc_L  = enc_per_100ms_L * 60;
 
-enc_R = zeros(size(all_omega_R));
+% enc_R = zeros(size(all_omega_R));
 
-enc_L = zeros(size(all_omega_L));
+% enc_L = zeros(size(all_omega_L));
 
-enc_R(1) = 0;
+% enc_R(1) = 0;
 
-for i=2:N
-    
-    enc_R(i) = enc_R(i-1)+ enc_per_100ms_R(i-1) * Robot.Ts / Ts_enc;
-    
-    enc_L(i) = enc_L(i-1)+ enc_per_100ms_L(i-1) * Robot.Ts / Ts_enc;
-    
-end
+% x_ft_R = [0 cumsum(all_omega_R)']';
+x_ft_R = [0 ; cumsum(v_ft_s_R) * Robot.Ts];
+% x_ft_L = [0 cumsum(all_omega_L)']';
+x_ft_L = [0 ; cumsum(v_ft_s_L) * Robot.Ts];
+
+% for i=2:N
+%     
+% %    enc_R(i) = enc_R(i-1)+ enc_per_100ms_R(i-1) * Robot.Ts / Ts_enc;
+% %     x_ft_R(i) = x_ft_R(i - 1) + v_ft_s_R(i - 1) * Robot.Ts / 100;
+%     x_ft_R(i) = 1;
+%     
+% %     enc_L(i) = enc_L(i-1)+ enc_per_100ms_L(i-1) * Robot.Ts / Ts_enc;
+% %     x_ft_L(i) = x_ft_L(i - 1) + v_ft_s_L(i - 1) * Robot.Ts / 100;
+%     x_ft_L(i) = 1;
+% 
+% end
 
 traj_dir    = 'Trajectories_dot_h\';
 
@@ -95,8 +110,10 @@ for i=1:N
         
     end
     
-    fprintf( fh, formatSpec, [enc_R(i), enc_per_100ms_R(i), Robot.Ts*1000]);
-    
+%     fprintf( fh, formatSpec, [enc_R(i), enc_per_100ms_R(i), Robot.Ts*1000]);
+    %[total feet, ft/sec, time]
+    fprintf( fh, formatSpec, [x_ft_R(i), v_ft_s_R(i), Robot.Ts*1000]);
+
 end
 
 formatSpec = '}};\n';
@@ -119,7 +136,9 @@ for i=1:N
         
     end
     
-    fprintf( fh, formatSpec, [enc_L(i), enc_per_100ms_L(i), Robot.Ts*1000]);
+%     fprintf( fh, formatSpec, [enc_L(i), enc_per_100ms_L(i), Robot.Ts*1000]);
+    %[total feet, ft/sec, time]
+    fprintf( fh, formatSpec, [x_ft_L(i), v_ft_s_L(i), Robot.Ts*1000]);
     
 end
 
