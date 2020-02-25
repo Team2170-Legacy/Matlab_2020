@@ -2,13 +2,11 @@
 % Written by Jacob K and Priyanshu on 2/8/2020
 %% Load in data
 close all;
-data = GetDriveTrainLogTable_v2('DriveTrainLog_2020-02-15_13_38.csv', [2, Inf]);
+data = GetDriveTrainLogTable_v3('DriveTrainLog_2020-02-24_19_40.csv', [2, Inf]);
 time = data.Time;
 
-%leftEncPos = data.LeftEncoderPosition;
-%rightEncPos = data.RightEncoderPosition;
-leftEncPos = data.LeftVelocityCommand;
-rightEncPos = data.RightVelocityCommand;
+leftEncPos = data.LeftEncoderPosition;
+rightEncPos = data.RightEncoderPosition;
 
 leftCommand = data.LeftVelocityCommand;
 rightCommand = data.RightVelocityCommand;
@@ -47,8 +45,8 @@ set(p111,'LineWidth',2);
 set(p111,'LineStyle','--');
 set(p111,'Color','r');
 
-%p112 = stairs(time, leftVelocity);
-p112 = stairs(time, leftEncPos);
+p112 = stairs(time, leftVelocity);
+%p112 = stairs(time, leftEncPos);
 set(p112,'LineWidth',2);
 set(p112,'LineStyle','-');
 set(p111,'Color','b');
@@ -60,7 +58,7 @@ legend('Left Command Velocity','Left Actual Velocity');
 
 % Add left position here
 ax2 = subplot(5,1,2); grid on; hold on;
-p121 = stairs(time, leftVelocity);
+p121 = stairs(time, leftEncPos);
 set(p121,'LineWidth',2);
 set(p121,'LineStyle','-');
 set(p121,'Color','b');
