@@ -49,7 +49,7 @@ p112 = stairs(time, leftVelocity);
 %p112 = stairs(time, leftEncPos);
 set(p112,'LineWidth',2);
 set(p112,'LineStyle','-');
-set(p111,'Color','b');
+set(p112,'Color','b');
 
 xlabel('Time [s]');
 ylabel('Velocity [ft/s]');
@@ -141,7 +141,7 @@ ax2 = subplot(5,1,2); grid on; hold on;
 p221 = stairs(time, rightEncPos);
 set(p221,'LineWidth',2);
 set(p221,'LineStyle','-');
-set(p221,'Color','r');
+set(p221,'Color','b');
 
 xlabel('Time [s]');
 ylabel('Position [ft]');

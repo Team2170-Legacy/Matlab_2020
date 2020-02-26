@@ -281,7 +281,7 @@ while i<=N && ~stop_flag,
     
     % Controller code
     [v,omega] = Controller_v003(distance, angle, Robot);
-%    [v,omega] = Controller_v003(-distance, angle, Robot);
+    %    [v,omega] = Controller_v003(-distance, angle, Robot);
     
     % Convert v and omega to omega_l and omega_r, i.e Robot.wL, Robot.wR
     %   vL - left wheel surface velocity [m/s] (NOT angular)
@@ -289,9 +289,9 @@ while i<=N && ~stop_flag,
     
     %acceleration limit enforcement
     %temp_amax    = 30;%*** 15 UNSTABLE 15;   % temporary max acceleration
-     temp_amax    = Robot.a_max;%*** 15 UNSTABLE 15;   % temporary max acceleration
+    temp_amax    = Robot.a_max;%*** 15 UNSTABLE 15;   % temporary max acceleration
     
-%     vL_temp2 = v - omega*Robot.d/2;
+    %     vL_temp2 = v - omega*Robot.d/2;
     vL_temp = v - omega*Robot.d/2;
     vR_temp = v + omega*Robot.d/2;
     
@@ -300,12 +300,12 @@ while i<=N && ~stop_flag,
     else % vL_temp < vL_prev
         vL = max( vL_temp, vL_prev - temp_amax*Ts);
     end
-        
+    
     if vR_temp >= vR_prev
         vR = min( vR_temp, vR_prev + temp_amax*Ts);
     else % vR_temp < vR_prev
         vR = max( vR_temp, vR_prev - temp_amax*Ts);
-    end   
+    end
     
     %velocity limit enforcement
     if vL > Robot.v_max
@@ -361,16 +361,16 @@ while i<=N && ~stop_flag,
     %   Use a Ts_camera delayed image error to simulate a delay in
     %   processing camera images
     
-%     if camera_delay,
-%         delta_vL        = +Kp * e_Gear_x_previous;
-%         delta_vR        = -Kp * e_Gear_x_previous;
-%     else
-%         
-%         delta_vL        = +Kp * e_Gear_x;
-%         delta_vR        = -Kp * e_Gear_x;
-%         
-%     end
-%     
+    %     if camera_delay,
+    %         delta_vL        = +Kp * e_Gear_x_previous;
+    %         delta_vR        = -Kp * e_Gear_x_previous;
+    %     else
+    %
+    %         delta_vL        = +Kp * e_Gear_x;
+    %         delta_vR        = -Kp * e_Gear_x;
+    %
+    %     end
+    %
     
     delta_wL        = delta_vL / Robot.R;
     delta_wR        = delta_vR / Robot.R;
@@ -385,36 +385,36 @@ while i<=N && ~stop_flag,
     Robot.y				= Robot.y + Robot.vy * Ts;			% [m]	Integrate robot y-position
     Robot.theta			= Robot.theta + Robot.omega * Ts;	% [rad]	Integrate robot angle
     
-%     if make_movies,
-%         draw_Robot(Robot);						% Call function to draw Robot in figure
-%         
-%         draw_Field_v001
-%         draw_Trajectory(trajectory);
-%         draw_Carrot(carrot);
-%         
-%         
-%         displayangle = (round(angle/deg * 100)/100);
-%         displaydistance = (round(distance*100)/100);
-%         displayvFwd = (round(Robot.vFwd*100)/100);
-%         
-%         %j
-%         text(10.5, 6, ['time = ' num2str(Field.t) ' secs']);
-%         text(10.5, 5.5, ['angle = ' num2str(displayangle) '?']);
-%         text(10.5, 5, ['distance = ' num2str(displaydistance) ' m']);
-%         text(10.5, 4.5,  ['vFwd = ' num2str(displayvFwd) ' m/s']);
-%         
-%         Robot_Figure		= getframe(f1);		% Capture screenshot image of figure
-%         Robot_Image			= Robot_Figure.cdata;
-%         %	pause
-%         
-%         if i < N
-%             cla         % Erase figure in preparation for next simulation step
-%         end
-%         
-%     else
-%         clc
-%         t
-%     end    
+    %     if make_movies,
+    %         draw_Robot(Robot);						% Call function to draw Robot in figure
+    %
+    %         draw_Field_v001
+    %         draw_Trajectory(trajectory);
+    %         draw_Carrot(carrot);
+    %
+    %
+    %         displayangle = (round(angle/deg * 100)/100);
+    %         displaydistance = (round(distance*100)/100);
+    %         displayvFwd = (round(Robot.vFwd*100)/100);
+    %
+    %         %j
+    %         text(10.5, 6, ['time = ' num2str(Field.t) ' secs']);
+    %         text(10.5, 5.5, ['angle = ' num2str(displayangle) '?']);
+    %         text(10.5, 5, ['distance = ' num2str(displaydistance) ' m']);
+    %         text(10.5, 4.5,  ['vFwd = ' num2str(displayvFwd) ' m/s']);
+    %
+    %         Robot_Figure		= getframe(f1);		% Capture screenshot image of figure
+    %         Robot_Image			= Robot_Figure.cdata;
+    %         %	pause
+    %
+    %         if i < N
+    %             cla         % Erase figure in preparation for next simulation step
+    %         end
+    %
+    %     else
+    %         clc
+    %         t
+    %     end
     
     if make_movies,
         draw_Robot(Robot);						% Call function to draw Robot in figure
@@ -457,7 +457,7 @@ while i<=N && ~stop_flag,
         writeVideo(vWriter, Robot_Image);			% Write screenshot image to video file
     end
     
-  
+    
     
     dx  = (Robot.x - trajectory.x(end));
     dy  = (Robot.y - trajectory.y(end));
@@ -543,16 +543,34 @@ if 1,
     ylabel('theta [rad]')
     
     xlabel('t [s]')
-
-%     title(mk_str(trajString))
-
+    
+    %     title(mk_str(trajString))
+    
 end
 
 % Saves all figures to folder Trajectories_Figures
 
-saveas(f2, ['Trajectories_Figures/' trajString '_F2.png']);
-saveas(f2b, ['Trajectories_Figures/' trajString '_F2b.png']);
-saveas(f3, ['Trajectories_Figures/' trajString '_F3.png']);
+f2name      = ['Trajectories_Figures\' trajString '_F2.png'];
+f2bname     = ['Trajectories_Figures\' trajString '_F2b.png'];
+f3name      = ['Trajectories_Figures\' trajString '_F3.png'];
+
+
+del2_command     = ['!del ' f2name];
+eval(del2_command);
+
+
+del2b_command     = ['!del ' f2bname];
+eval(del2b_command);
+
+
+del3_command     = ['!del ' f3name];
+eval(del3_command);
+
+
+
+saveas(f2, f2name );
+saveas(f2b, f2bname );
+saveas(f3, f3name);
 
 Robot.wL_all(1)		= Robot.wL;
 Robot.wR_all(1)		= Robot.wR;

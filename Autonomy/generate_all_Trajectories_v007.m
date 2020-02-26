@@ -30,7 +30,7 @@ init_Trajectory_CrossLine_P2;
 init_Trajectory_CrossLine_P3;
 init_Trajectory_Test1;
 
-all_Trajectories_String = {'To_Trench' 'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L'};
+all_Trajectories_String = {'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench'};
 % all_Trajectories_String = {'To_PwrPort_L'};
 
 % all_Trajectories_String = {'To_Trench'};
@@ -67,7 +67,7 @@ for traj = 1:length(all_Trajectories)
     
     t_final     = all_t(end);
     
-    make_dot_h_file_v003(trajString, ...
+    make_dot_h_file_v004(trajString, ...
     Robot.wR_all, ...
     Robot.wL_all, ...
     all_t, Robot, ...
