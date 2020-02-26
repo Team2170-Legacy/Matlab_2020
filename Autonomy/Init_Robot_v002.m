@@ -38,12 +38,12 @@ t_auto_end      = 0;
 %   differences
 %Robot.d	= 25*in;		% distance between wheel centerlines
 
-Robot.d	= 26*in;	% distance between wheel centerlines
+Robot.d	= 24*in;	% distance between wheel centerlines
 
 %   Update 03/03/2018 Martin Krucinski to account for experimental
 %   differences
-%Robot.R = 2.5*in;         % [m]		Robot wheel radius
-Robot.R = 2.5*in  * (118+3/4)/120;         % [m]		Robot wheel radius
+Robot.R = 2.5*in;         % [m]		Robot wheel radius
+% Robot.R = 2.5*in  * (118+3/4)/120;         % [m]		Robot wheel radius
 
 
 %Robot.BL = 7.5*in; % bumper length

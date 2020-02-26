@@ -14,24 +14,28 @@ init_Constants;
 Init_Robot_v002;
 Init_Field_v003;
 
-% init_Trajectory_To_PwrPort_L;
+init_Trajectory_To_PwrPort_C;
 init_Trajectory_To_PwrPort_L_v002;
-
-% init_Trajectory_To_PwrPort_R;
 init_Trajectory_To_PwrPort_R_v002;
-
-init_Trajectory_To_PwrPort;
-
-% init_Trajectory_To_Trench;
-init_Trajectory_To_Trench_v002;
 
 init_Trajectory_CrossLine_P1;
 init_Trajectory_CrossLine_P2;
 init_Trajectory_CrossLine_P3;
+
+init_Trajectory_To_Trench_C;
+init_Trajectory_To_Trench_L;
+init_Trajectory_To_Trench_R;
+
 init_Trajectory_Test1;
 
-all_Trajectories_String = {'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench'};
+all_Trajectories_String = {'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench' 'To_Trench_L' 'To_Trench_R'};
 % all_Trajectories_String = {'To_PwrPort_L'};
+
+% all_Trajectories_String = {'To_PwrPort_R' 'To_PwrPort_L'};
+% all_Trajectories_String = {'To_PwrPort_R'};
+% all_Trajectories_String = {'To_PwrPort_L'};
+
+% all_Trajectories_String = {'To_Trench_T' 'To_Trench_B'};
 
 % all_Trajectories_String = {'To_Trench'};
 % all_Trajectories_String = {'Test1'};
