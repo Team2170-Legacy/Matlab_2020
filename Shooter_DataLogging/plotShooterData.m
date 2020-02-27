@@ -1,7 +1,7 @@
 % plotData.m
 % Written by Jacob K and Priyanshu on 2/8/2020
 %% Load in data
-data = GetShooterLogTable('DriveTrainLog_2020-02-15_13_38.csv', [2, Inf]);
+data = GetShooterLogTable('ShooterLog_2020-02-26_20_00.csv', [2, Inf]);
 time = data.Time;
 
 leftCommand = data.LeftVelocityCommand;
