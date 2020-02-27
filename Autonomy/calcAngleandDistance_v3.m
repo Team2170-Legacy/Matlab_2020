@@ -24,9 +24,9 @@ end
 %    2019-03-10 Dr K.  changing distance sign is probably not needed in
 %    2019 Deep Space
 
-% if(angle<-90*deg && angle>-270*deg || angle>90*deg && angle<270*deg)
-%     distance = -distance;
-% end
+ if(angle<-90*deg && angle>-270*deg || angle>90*deg && angle<270*deg)
+     distance = -distance;
+ end
 
 
 

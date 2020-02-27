@@ -8,8 +8,8 @@ To_PwrPort_R.Arc1.radius = 2;
 To_PwrPort_R.Arc1 = get_Curve(120*deg, 130*deg, 0, To_PwrPort_R.Arc1.n, To_PwrPort_R.Arc1.radius, RobotStartX - 1.25*ft - To_PwrPort_R.Arc1.radius * cosd(110), RobotStartY + Robot.W + RobotSep - 0.125*ft - To_PwrPort_R.Arc1.radius);
 
 To_PwrPort_R.Arc2.n = 100;
-To_PwrPort_R.Arc2.radius = 2.25;
-To_PwrPort_R.Arc2 = get_Curve(300*deg, 270*deg, 0, To_PwrPort_R.Arc2.n, To_PwrPort_R.Arc2.radius, .7, RobotStartY + To_PwrPort_R.Arc2.radius);
+To_PwrPort_R.Arc2.radius = 1.8;
+To_PwrPort_R.Arc2 = get_Curve(310*deg, 270*deg, 0, To_PwrPort_R.Arc2.n, To_PwrPort_R.Arc2.radius, .6, RobotStartY + To_PwrPort_R.Arc2.radius);
 
 To_PwrPort_R.x = [RobotStartX...
                   RobotStartX - 0.9344*ft...
@@ -26,6 +26,7 @@ To_PwrPort_R.y = [RobotStartY + Robot.W + RobotSep...
 % axis equal
 % plot(To_PwrPort_R.x, To_PwrPort_R.y, 'r*');
 % axis equal            
+
 RobotStartTangentX = To_PwrPort_R.x(1) - To_PwrPort_R.x(length(To_PwrPort_R.x));
 RobotStartTangentY = To_PwrPort_R.y(1) - To_PwrPort_R.y(length(To_PwrPort_R.y));
 

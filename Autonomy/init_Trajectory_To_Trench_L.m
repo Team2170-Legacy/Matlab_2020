@@ -19,8 +19,8 @@ To_Trench_L.theta_start = (atan(To_Trench_L.RobotStartTangentY/To_Trench_L.Robot
 
 %Generate Arc
 To_Trench_L.Arc.n = 100;
-To_Trench_L.Arc.radius = 1.3;
-To_Trench_L.Arc = get_Curve(250*deg, 90*deg, 0, To_Trench_L.Arc.n, To_Trench_L.Arc.radius, To_Trench_L.Start.X, To_Trench.End.Y - To_Trench_L.Arc.radius);
+To_Trench_L.Arc.radius = (To_Trench_L.End.Y - (To_Trench_L.Start.Y - Robot.W - RobotSep)) / 2;
+To_Trench_L.Arc = get_Curve(250*deg, 90*deg, 0, To_Trench_L.Arc.n, To_Trench_L.Arc.radius, To_Trench_L.Start.X, To_Trench_L.End.Y - To_Trench_L.Arc.radius);
 traj_length(To_Trench_L.Arc)
 
 To_Trench_L.x = [

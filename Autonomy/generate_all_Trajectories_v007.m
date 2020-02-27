@@ -26,19 +26,24 @@ init_Trajectory_To_Trench_C;
 init_Trajectory_To_Trench_L;
 init_Trajectory_To_Trench_R;
 
-init_Trajectory_Test1;
+init_Trajectory_Backwards;
 
-all_Trajectories_String = {'To_PwrPort' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench' 'To_Trench_L' 'To_Trench_R'};
+% init_Trajectory_Test1;
+% init_Trajectory_Test2;
+
+all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench' 'To_Trench_L' 'To_Trench_R' 'Backwards'};
 % all_Trajectories_String = {'To_PwrPort_L'};
 
 % all_Trajectories_String = {'To_PwrPort_R' 'To_PwrPort_L'};
+% all_Trajectories_String = {'To_PwrPort_C'};
 % all_Trajectories_String = {'To_PwrPort_R'};
 % all_Trajectories_String = {'To_PwrPort_L'};
 
 % all_Trajectories_String = {'To_Trench_T' 'To_Trench_B'};
-
 % all_Trajectories_String = {'To_Trench'};
+
 % all_Trajectories_String = {'Test1'};
+% all_Trajectories_String = {'Test2'};
 
 %all_Trajectories_String = { 'CrossLine_P1' 'CrossLine_P2' 'CrossLine_P3'};
 %all_Trajectories_String = {'To_PwrPort_R'};
