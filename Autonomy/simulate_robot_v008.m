@@ -258,6 +258,7 @@ while i<=N && ~stop_flag,
     prev_forward_flag    = forward_flag;
     
     prev_distance   = distance;
+    
     [angle,distance] = calcAngleandDistance_v3(carrot,Robot);
     
     %if switch_direction && timer > 0.9,
@@ -280,7 +281,16 @@ while i<=N && ~stop_flag,
     end
     
     % Controller code
-    [v,omega] = Controller_v003(distance, angle, Robot);
+    
+    
+    
+    
+    %***************[v,omega] = Controller_v003(distance, angle, Robot);
+    [v,omega] = Controller_v004(distance, angle, Robot);
+    
+    
+    
+    
     %    [v,omega] = Controller_v003(-distance, angle, Robot);
     
     % Convert v and omega to omega_l and omega_r, i.e Robot.wL, Robot.wR
