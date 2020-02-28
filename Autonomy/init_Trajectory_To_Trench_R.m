@@ -9,7 +9,8 @@ To_Trench_R.Start.X = AutoLineRed.C1_x;
 To_Trench_R.Start.Y = (Field.W - Field.CornerY) - (targetZone/2);
 
 %End points
-To_Trench_R.End.X = 8.5; %meters
+%To_Trench_R.End.X = 8.5; %meters
+To_Trench_R.End.X = 8.0; %meters
 To_Trench_R.End.Y = 24.6875*ft;
 
 %Starting angle tangents
@@ -20,7 +21,7 @@ To_Trench_R.theta_start = (atan(To_Trench_R.RobotStartTangentY/To_Trench_R.Robot
 %Generate Arc
 To_Trench_R.Arc.n = 100;
 To_Trench_R.Arc.radius = .5;
-To_Trench_R.Arc = get_Curve(300*deg, 90*deg, 0, To_Trench_R.Arc.n, To_Trench_R.Arc.radius, To_Trench_R.Start.X - cosd(339.1325), To_Trench.End.Y - To_Trench_R.Arc.radius);
+To_Trench_R.Arc = get_Curve(300*deg, 90*deg, 0, To_Trench_R.Arc.n, To_Trench_R.Arc.radius, To_Trench_R.Start.X - cosd(339.1325), To_Trench_R.End.Y - To_Trench_R.Arc.radius);
 traj_length(To_Trench_R.Arc)
 
 To_Trench_R.x = [

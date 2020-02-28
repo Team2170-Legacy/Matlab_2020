@@ -10,6 +10,7 @@ To_Trench_L.Start.Y = (Field.W - Field.CornerY) - (targetZone/2);
 
 %End points
 To_Trench_L.End.X = 8.5; %meters
+To_Trench_L.End.X = 8.0; %meters
 To_Trench_L.End.Y = 24.6875*ft;
 
 %Starting angle tangents

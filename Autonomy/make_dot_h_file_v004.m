@@ -65,7 +65,7 @@ dot_h_file_name = [ traj_dir traj_name '.h' ];
 
 fh = fopen( dot_h_file_name ,'w');
 
-author = 'Adonis Canada, Priyanshu Agrawal, Baris Sengezen';
+author = 'Jacob Krucinski, Priyanshu Agrawal, Baris Sengezen, Walson ';
 time = datestr(now, 'HH:MM');
 date_today = date;
 

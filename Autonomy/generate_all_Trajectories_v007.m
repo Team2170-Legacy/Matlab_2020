@@ -6,9 +6,10 @@
 %   02/25/2019 v006     preparation to use for 2019 Deep Space season
 %
 %   03/01/2019 v007     Uses simulate_robot_v008.m, simpler version
+
 S
-make_movies = true
-%make_movies = false
+%make_movies = true
+make_movies = false
 
 init_Constants;
 Init_Robot_v002;
@@ -29,16 +30,17 @@ init_Trajectory_To_Trench_R;
 init_Trajectory_Backwards_Short;
 init_Trajectory_Backwards_Long;
 
-% init_Trajectory_Test1;
-% init_Trajectory_Test2;
-
-%all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench' 'To_Trench_L' 'To_Trench_R' 'Backwards'};
+%-----------------------------------------------------------------------
+%   This generates ALL trajectories 
+%
+all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench_C' 'To_Trench_L' 'To_Trench_R' 'Backwards_Short' 'Backwards_Long'};
+%-----------------------------------------------------------------------
 
 
 %all_Trajectories_String = { 'Backwards_Long' };
 %all_Trajectories_String = { 'Backwards_Short' };
 
-all_Trajectories_String = {'To_Trench_C'};
+%all_Trajectories_String = {'To_Trench_C'};
 
 
 % all_Trajectories_String = {'To_PwrPort_L'};
