@@ -8,14 +8,15 @@
 %   03/01/2019 v007     Uses simulate_robot_v008.m, simpler version
 
 S
-%make_movies = true
-make_movies = false
+make_movies = true
+%make_movies = false
 
 init_Constants;
 Init_Robot_v002;
 Init_Field_v003;
 
 init_Trajectory_To_PwrPort_C;
+init_Trajectory_To_PwrPort_C_Slow;
 
 %***init_Trajectory_To_PwrPort_L_v002;
 init_Trajectory_To_PwrPort_L_v003;
@@ -37,9 +38,10 @@ init_Trajectory_Backwards_Long;
 %-----------------------------------------------------------------------
 %   This generates ALL trajectories
 %
-all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench_C' 'To_Trench_L' 'To_Trench_R' 'Backwards_Short' 'Backwards_Long'};
+%all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench_C' 'To_Trench_L' 'To_Trench_R' 'Backwards_Short' 'Backwards_Long'};
 %-----------------------------------------------------------------------
 
+all_Trajectories_String = {'To_PwrPort_C_Slow'};
 
 %all_Trajectories_String = { 'Backwards_Long' };
 %all_Trajectories_String = { 'Backwards_Short' };
