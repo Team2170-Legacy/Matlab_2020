@@ -35,13 +35,14 @@ init_Trajectory_To_Trench_R;
 init_Trajectory_Backwards_Short;
 init_Trajectory_Backwards_Long;
 
-init_Trajectory_Steal_Balls_Operation_Part1;
+init_Trajectory_SBO_Part1;
+init_Trajectory_SBO_Part2;
 %-----------------------------------------------------------------------
 %   This generates ALL trajectories
 %
 %all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench_C' 'To_Trench_L' 'To_Trench_R' 'Backwards_Short' 'Backwards_Long'};
 %-----------------------------------------------------------------------
-all_Trajectories_String = {'Steal_Balls_Operation_Part1'};
+all_Trajectories_String = {'SBO_Part1'};
 %all_Trajectories_String = {'To_PwrPort_C_Slow'};
 
 %all_Trajectories_String = { 'Backwards_Long' };
