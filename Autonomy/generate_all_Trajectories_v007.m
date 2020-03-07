@@ -39,7 +39,8 @@ init_Trajectory_SBO_Part1;
 init_Trajectory_SBO_Part2;
 
 
-init_Trajectory_To_PwrPort_Trench_v002;
+% init_Trajectory_To_PwrPort_Trench_v002;
+init_Trajectory_To_PwrPort_Trench_v003;
 %-----------------------------------------------------------------------
 %   This generates ALL trajectories
 %

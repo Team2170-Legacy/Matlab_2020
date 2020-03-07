@@ -2,7 +2,7 @@
 % Written by Jacob K and Priyanshu on 2/8/2020
 %% Load in data
 close all;
-data = GetDriveTrainLogTable_v3('DriveTrainLog_2020-02-25_19_52.csv', [2, Inf]);
+data = GetDriveTrainLogTable_v3('DriveTrainLog_2020-03-07_11_11.csv', [2, Inf]);
 time = data.Time;
 
 leftEncPos = data.LeftEncoderPosition;
