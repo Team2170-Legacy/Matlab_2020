@@ -45,11 +45,11 @@ init_Trajectory_To_PwrPort_Trench_v002;
 %
 %all_Trajectories_String = {'To_PwrPort_C' 'To_PwrPort_R' 'To_PwrPort_L' 'To_Trench_C' 'To_Trench_L' 'To_Trench_R' 'Backwards_Short' 'Backwards_Long'};
 %-----------------------------------------------------------------------
- all_Trajectories_String = {'SBO_Part1' 'SBO_Part2'};
+%all_Trajectories_String = {'SBO_Part1' 'SBO_Part2'};
 % all_Trajectories_String = {'To_PwrPort_C_Slow'};
 % all_Trajectories_String = {'To_PwrPort_C'};
 
-%all_Trajectories_String = {'To_PwrPort_Trench'};
+all_Trajectories_String = {'To_PwrPort_Trench'};
 
 % all_Trajectories_String = { 'Backwards_Long' };
 % all_Trajectories_String = { 'Backwards_Short' };
