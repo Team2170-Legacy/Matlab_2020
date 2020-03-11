@@ -1,7 +1,11 @@
 % plotData.m
 % Written by Jacob K and Priyanshu on 2/8/2020
 %% Load in data
-filename = 'ShooterLog_2020-03-10_19_02.csv';
+
+%filename = 'ShooterLog_2020-03-10_19_02.csv';
+%filename = 'ShooterLog_2020-03-10_19_18.csv';
+filename = 'ShooterLog_2020-03-10_19_39.csv';
+
 disp(['Using data from log ' filename]);
 data = GetShooterLogTable(filename, [2, Inf]);
 time = unwrap(data.Time);
